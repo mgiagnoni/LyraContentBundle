@@ -1,0 +1,20 @@
+{% extends "LyraContentBundle::admin_layout.html.twig" %}
+{% block content %}
+<div id="ly-form-wrapper">
+    {% block form_title %}{% endblock %}
+    {% block button_bar %}
+    <div id="button-bar">
+        <a class="button action-back" href="{{ path('admin_content') }}">Go back</a>
+    </div>
+    {% endblock %}
+    {% block form %}{% endblock %}
+</div>
+{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/lyracontent/css/form.css') }}" />
+{% endblock %}
+{% block javascripts_head %}
+{{ parent() }}
+<script type="text/javascript" src="{{ asset('bundles/lyracontent/js/form.js') }}"></script>
+{% endblock %}

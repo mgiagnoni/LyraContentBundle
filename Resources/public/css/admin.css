@@ -1,0 +1,17 @@
+h1 {
+    font-size: 1.3em;
+    margin: 0;
+}
+h3 {
+    font-size: 1.2em;
+}
+.clear {
+    clear: both;
+}
+#button-bar {
+    margin: 10px 0 4px;
+}
+.ui-button-text {
+    font-size: 90%;
+    font-weight: normal;
+}

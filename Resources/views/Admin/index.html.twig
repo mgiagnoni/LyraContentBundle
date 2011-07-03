@@ -1,0 +1,49 @@
+{% extends "LyraContentBundle::admin_layout.html.twig" %}
+{% block content %}
+<div id="ly-list-wrapper">
+    <h1>{{ 'list.title'|trans({}, 'LyraContentBundle') }}</h1>
+    <div id="button-bar">
+        <a class="button action-new" href="{{ path('admin_page_new', { 'type' : 'blog'}) }}">New content</a>
+         <a class="button action-new" href="{{ path('admin_page_new') }}">New Page</a>
+    </div>
+    <form action="{{ path('admin_content_object') }}" method="post">
+    <table class="ly-list">
+        <thead>
+            <tr>
+                <th>{{ 'list.order'|trans({}, 'LyraContentBundle') }}</th>
+                <th>{{ 'list.content'|trans({}, 'LyraContentBundle') }}</th>
+                <th>{{ 'list.published'|trans({}, 'LyraContentBundle') }}</th>
+                <th>{{ 'list.actions'|trans({}, 'LyraContentBundle') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for node in nodes %}
+        <tr>
+            <td class="order-actions">
+                {% include 'LyraContentBundle:Admin:order_actions.html.twig' with { 'node' : node } %}
+            </td>
+            <td class="content lev-{{ node.depth }}">
+                <a href="{{ path('admin_content_edit', {'id' : node.id, 'type' : node.type}) }}">{{ node }}</a>
+            </td>
+            <td class="published">
+                {{ node.published ? 'Yes' : 'No' }}
+            </td>
+            <td class="object-actions">
+                {% include "%s:Admin:object_actions.html.twig"|format(types[node.type]['bundle']) with { 'object' : node } %}
+                {% include 'LyraContentBundle:Admin:publish_actions.html.twig' with { 'object' : node } %}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </form>
+</div>
+{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/lyracontent/css/list.css') }}" />
+{% endblock %}
+{% block javascripts_head %}
+{{ parent() }}
+<script type="text/javascript" src="{{ asset('bundles/lyracontent/js/list.js') }}"></script>
+{% endblock %}

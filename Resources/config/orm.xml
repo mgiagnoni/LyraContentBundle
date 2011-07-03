@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="lyra_content.model.node.class">Lyra\ContentBundle\Entity\Node</parameter>
+    </parameters>
+
+    <services>
+        <service id="lyra_content.node_manager.default" class="Lyra\ContentBundle\Entity\NodeManager" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%lyra_content.model.node.class%</argument>
+            <argument>%lyra_content.types%</argument>
+        </service>
+
+        <service id="lyra_content.page_manager.default" class="Lyra\ContentBundle\Entity\PageManager" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%lyra_content.model.page.class%</argument>
+        </service>
+
+        <service id="lyra_content.form.listener.page" class="Lyra\ContentBundle\Entity\NodeListener">
+            <argument type="service" id="service_container" />
+        </service>
+    </services>
+
+</container>

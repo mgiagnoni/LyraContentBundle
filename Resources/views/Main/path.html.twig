@@ -1,0 +1,9 @@
+<ol class="path">
+    {% for node in path %}
+        {% if node.published %}
+            <li>
+                <a href="{{ path('content_show', {'path': node.path}) }}">{{ node.linkTitle ? node.linkTitle : node.title }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ol>

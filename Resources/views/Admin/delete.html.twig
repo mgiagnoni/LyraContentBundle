@@ -1,0 +1,20 @@
+{% extends "LyraContentBundle::admin_layout.html.twig" %}
+
+{% block content %}
+<div id="confirm-delete">
+    <h1>Delete content</h1>
+    The following content items will be permanently deleted:
+    <ul>
+        <li>{{ content}}</li>
+        {% for child in children %}
+            <li>{{ child }}</li>
+        {% endfor %}
+    </ul>
+    This operation cannot be undone, please confirm.
+    <form id="ly-form" action="{{ path('admin_content_delete', { 'id': content.id }) }}" method="post">
+
+    <input type="submit" name ="submit" value="Yes, delete" />
+    <a href="{{ path('admin_content') }}">No, abort</a>
+    </form>
+</div>
+{% endblock %}

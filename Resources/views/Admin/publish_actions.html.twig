@@ -1,0 +1,5 @@
+{% if object.published %}
+    <input class="button icon-only" type="submit" name="action[unpublish][{{ object.id }}]" value="{{ 'list.unpublish'|trans({}, 'LyraContentBundle') }}" />  
+{% else %}
+    <input class="button icon-only" type="submit" name="action[publish][{{ object.id }}]" value="{{ 'list.publish'|trans({}, 'LyraContentBundle') }}" />
+{% endif %}

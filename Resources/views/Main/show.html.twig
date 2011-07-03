@@ -1,0 +1,13 @@
+{% extends "LyraContentBundle::layout.html.twig" %}
+{% block title %}
+    {{ item.metaTitle ? item.metaTitle : node.title}}
+{% endblock %}
+{% block meta_tags %}
+    {% include 'LyraContentBundle:Main:meta_tags.html.twig' with {'item': item} %}
+{% endblock %}
+{% block path %}
+    {% include 'LyraContentBundle:Main:path.html.twig' with {'path': path} %}
+{% endblock %}
+{% block content %}
+    {{ item.content }}
+{% endblock %}

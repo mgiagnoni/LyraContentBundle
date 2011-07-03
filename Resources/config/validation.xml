@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+    http://symfony.com/schema/dic/services/constraint-mapping-1.0.xsd">
+
+    <class name="Lyra\ContentBundle\Model\Node">
+        <property name="title">
+            <constraint name="NotBlank">
+                <option name="message">Please enter a title</option>
+            </constraint>
+        </property>
+    </class>
+
+    <class name="Lyra\ContentBundle\Model\Page">
+        <property name="content">
+            <constraint name="NotBlank">
+                <option name="message">Please enter page content</option>
+            </constraint>
+        </property>
+    </class>
+
+
+</constraint-mapping>

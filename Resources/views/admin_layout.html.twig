@@ -1,0 +1,13 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    {% block content %}{% endblock %}
+{% endblock %}
+{% block javascripts_head %}
+<script type="text/javascript" src="{{ asset('bundles/lyracontent/js/jq/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/lyracontent/js/jq/jquery-ui.custom.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/lyracontent/js/admin.js') }}"></script>
+{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/lyracontent/css/ui/ui-lightness/jquery-ui.custom.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/lyracontent/css/admin.css') }}" />
+{% endblock %}

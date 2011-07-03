@@ -1,0 +1,34 @@
+Lyra\ContentBundle\Entity\Page:
+    type: entity
+    table: page
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        content:
+            column: content
+            type: text
+        metaTitle:
+            column: meta_title
+            type: string
+            length: 255
+            nullable: true
+        metaDescription:
+            column: meta_description
+            type: text
+            nullable: true
+        metaKeywords:
+            column: meta_keywords
+            type: text
+            nullable: true
+    oneToOne:
+        node:
+            targetEntity: Node
+            cascade: [all]
+            joinColumn:
+                name: node_id
+                referencedColumnName: id
+                onDelete: cascade
+                onUpdate: cascade        

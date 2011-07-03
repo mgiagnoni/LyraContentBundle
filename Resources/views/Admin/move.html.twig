@@ -1,0 +1,16 @@
+{% extends "LyraContentBundle:Admin:form.html.twig" %}
+{% block form_title %}
+<h1>Move Content</h1>
+{% endblock %}
+{% block button_bar %}{% endblock %}
+{% block form %}
+    <p>Select a new parent for content item <em>{{ content.title }}</em> (and all its descendants):</p>
+    {{ form_errors(form) }}
+    <form class="ly-form" action="{{ path('admin_content_move', { 'id': content.id }) }}" method="post">
+        {{ form_row(form.parent) }}
+        {{ form_rest(form) }}
+        <hr class="clear" />
+        <input type="submit" name="submit" value="Move" />
+        <a href="{{ path('admin_content') }}">Abort</a>
+    </form>
+{% endblock %}

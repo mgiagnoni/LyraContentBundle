@@ -1,0 +1,40 @@
+#ly-list-wrapper {
+    padding: 2px 2px 4px;
+}
+#ly-list-wrapper h1 {
+    padding-left: 5px;
+}
+table.ly-list {
+  border-collapse: collapse;
+  width: 100%;
+}
+table.ly-list caption {
+    padding: .25em
+}
+table.ly-list td {
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  padding: .25em;
+  text-align: left;
+}
+table.ly-list th {
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  padding: .25em;
+}
+td.order-actions {
+    width: 145px;
+    text-align: center !important;
+}
+td.content {
+    width: 315px;
+}
+td.published {
+    width: 90px;
+    text-align: center !important;
+}
+.object-actions form, .order-actions form {
+    display: inline;
+}

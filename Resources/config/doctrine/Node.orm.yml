@@ -1,0 +1,66 @@
+Lyra\ContentBundle\Entity\Node:
+    type: entity
+    table: node
+    repositoryClass: Gedmo\Tree\Entity\Repository\NestedTreeRepository
+    gedmo:
+        tree:
+            type: nested
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+            gedmo:
+                - sluggable
+        slug:
+            type: string
+            length: 255
+            gedmo:
+                slug:
+                    style: default
+                    separator: '-'
+                    unique: false
+        path:
+            type: string
+            length: 255
+            nullable: true
+        published:
+            column: is_published
+            type: boolean
+        link_title:
+            type: string
+            length: 255
+            nullable: true
+        lft:
+            type: integer
+            gedmo:
+                - treeLeft
+        rgt:
+            type: integer
+            gedmo:
+                - treeRight
+        lvl:
+            type: integer
+            gedmo:
+                - treeLevel
+        type:
+            type: string
+            length: 50
+    manyToOne:
+        parent:
+            targetEntity: Lyra\ContentBundle\Entity\Node
+            inversedBy: children
+            gedmo:
+                - treeParent
+            joinColumn:
+                name: parent_id
+                referencedColumnName: id
+                onDelete: cascade
+    oneToMany:
+        children:
+            targetEntity: Lyra\ContentBundle\Entity\Node
+            mappedBy: parent

@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="it" datatype="plaintext" original="" >
+        <body>
+            <trans-unit id="1">
+                <source>list.title</source>
+                <target>Contenuti</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>list.order</source>
+                <target>Ordina</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>list.content</source>
+                <target>Contenuto</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>list.published</source>
+                <target>Pubblicato</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>list.actions</source>
+                <target>Azioni</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>list.up</source>
+                <target>Su</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>list.down</source>
+                <target>Giù</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>list.move</source>
+                <target>Muovi</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>list.edit</source>
+                <target>Modifica</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>list.delete</source>
+                <target>Cancella</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>list.publish</source>
+                <target>Pubblicato</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>list.unpublish</source>
+                <target>Non pubblicato</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>list.new</source>
+                <target>Nuovo contenuto</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>node.parent</source>
+                <target>Padre</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>node.title</source>
+                <target>Titolo</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>node.link_title</source>
+                <target>Titolo link</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>node.published</source>
+                <target>Pubblicato</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>item.content</source>
+                <target>Contenuto</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>item.meta_title</source>
+                <target>Meta titolo</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>item.meta_description</source>
+                <target>Meta descrizione</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>item.meta_keywords</source>
+                <target>Meta keywords</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>item.type</source>
+                <target>Tipo</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

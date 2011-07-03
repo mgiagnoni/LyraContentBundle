@@ -1,0 +1,4 @@
+LyraContentBundle Documentation
+===============================
+
+TODO
