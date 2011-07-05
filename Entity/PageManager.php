@@ -43,7 +43,6 @@ class PageManager extends AbstractPageManager
     public function savePage(PageInterface $page)
     {
         $node = $page->getNode();
-        $node->updatePath();
         $node->setType('page');
         $this->em->persist($page);
         $this->em->flush();

@@ -11,8 +11,6 @@
 
 namespace Lyra\ContentBundle\Model;
 
-use Gedmo\Sluggable\Util\Urlizer;
-
 abstract class Node implements NodeInterface
 {
     protected $id;
@@ -112,11 +110,4 @@ abstract class Node implements NodeInterface
     {
         return $this->children;
     }      
-
-    public function updatePath()
-    {
-        if (null === $this->path && null !== $parent = $this->getParent()) {
-            $this->path = trim($parent->getPath() . '/' . Urlizer::transliterate($this->title), '/');
-        } 
-    }
 }

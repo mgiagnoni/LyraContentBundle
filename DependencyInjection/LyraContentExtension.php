@@ -38,8 +38,9 @@ class LyraContentExtension extends Extension
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
-        $loader->load($config['db_driver'] . '.xml');
-        $loader->load('form.xml');
+        foreach (array($config['db_driver'], 'form', 'listeners') as $basename) {
+            $loader->load(sprintf('%s.xml', $basename));
+        }
 
         $container->setAlias('lyra_content.node_manager', $config['service']['node_manager']);
         $container->setAlias('lyra_content.page_manager', $config['service']['page_manager']);

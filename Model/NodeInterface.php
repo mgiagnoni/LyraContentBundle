@@ -45,8 +45,6 @@ interface NodeInterface
 
     function getChildren();
 
-    function updatePath();
-
     function getDepth();
 
     function isRoot();
