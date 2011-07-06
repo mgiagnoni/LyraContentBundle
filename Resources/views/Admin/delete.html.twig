@@ -5,9 +5,9 @@
     <h1>Delete content</h1>
     The following content items will be permanently deleted:
     <ul>
-        <li>{{ content}}</li>
+        <li>{{ content.title }}</li>
         {% for child in children %}
-            <li>{{ child }}</li>
+            <li class="depth-{{ child.depth }}">{{ child.title }}</li>
         {% endfor %}
     </ul>
     This operation cannot be undone, please confirm.

@@ -65,7 +65,7 @@ jQuery().ready(function() {
       autoOpen: true,
       resizable: false,
       minHeight: 90,
-      width: 350,
+      width: 400,
       title: $("h1", this).hide().text(),
       close: function() {$(this).remove()},
       buttons: buttonsOpts

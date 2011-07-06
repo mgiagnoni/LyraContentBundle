@@ -38,3 +38,18 @@ td.published {
 .object-actions form, .order-actions form {
     display: inline;
 }
+
+/* Delete node dialog box */
+
+#confirm-delete ul {
+    list-style-position: inside;
+}
+li.depth-2 {
+    padding-left: 10px
+}
+li.depth-3 {
+    padding-left: 20px
+}
+li.depth-4 {
+    padding-left: 30px
+}
