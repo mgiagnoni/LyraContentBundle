@@ -14,6 +14,8 @@ namespace Lyra\ContentBundle\Controller;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+
 
 class AdminController extends ContainerAware
 {
@@ -39,6 +41,10 @@ class AdminController extends ContainerAware
             throw new NotFoundHttpException(sprintf('Node with id "%s" does not exist', $id));
         }
         
+        if ($node->isRoot()) {
+            throw new HttpException(403, 'Root node cannot be deleted.');
+        }
+
         $children = $manager->findNodeDescendants($node);
         if ('POST' === $this->container->get('request')->getMethod()) {
             $manager->removeNode($node);
