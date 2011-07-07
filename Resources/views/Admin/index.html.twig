@@ -25,11 +25,10 @@
                 <a href="{{ path('admin_content_edit', {'id' : node.id, 'type' : node.type}) }}">{{ node }}</a>
             </td>
             <td class="published">
-                {{ node.published ? 'Yes' : 'No' }}
+                {% include 'LyraContentBundle:Admin:publish_actions.html.twig' with { 'object' : node } %}
             </td>
             <td class="object-actions">
                 {% include "%s:Admin:object_actions.html.twig"|format(types[node.type]['bundle']) with { 'object' : node } %}
-                {% include 'LyraContentBundle:Admin:publish_actions.html.twig' with { 'object' : node } %}
             </td>
         </tr>
         {% endfor %}
