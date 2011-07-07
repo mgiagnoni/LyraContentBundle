@@ -36,10 +36,10 @@ class SetParentFormType extends AbstractType
         $factory = $builder->getFormFactory();
         $manager = $this->manager;
         
-        $buildParent = function ($form, $content) use ($factory, $manager, $options) {
+        $buildParent = function ($form, $node) use ($factory, $manager, $options) {
             $form->add($factory->createNamed('entity', 'parent', null, array(
                'class' => $options['data_class'],
-               'query_builder' => $manager->getNodeNotDescendantsQueryBuilder($content),
+               'query_builder' => $manager->getNodeNotDescendantsQueryBuilder($node),
                'label' => 'Parent',
            )));
         };

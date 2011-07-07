@@ -1,11 +1,14 @@
 <div id="column-1">
     <fieldset>
         <ol>
+            {% if form.node.offsetExists('parent') %}
             <li>
                {{ form_errors(form.node.parent) }}
                {{ form_label(form.node.parent, 'node.parent') }}
                {{ form_widget(form.node.parent) }}
             </li>
+            {% endif %}
+
             <li>
                {{ form_errors(form.node.title) }}
                {{ form_label(form.node.title, 'node.title') }}
