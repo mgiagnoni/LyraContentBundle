@@ -53,3 +53,8 @@ li.depth-3 {
 li.depth-4 {
     padding-left: 30px
 }
+.node-path {
+    display: block;
+    font-size: 85%;
+    text-align: right;
+}

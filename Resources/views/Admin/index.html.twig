@@ -23,6 +23,7 @@
             </td>
             <td class="content lev-{{ node.depth }}">
                 <a href="{{ path('admin_content_edit', {'id' : node.id, 'type' : node.type}) }}">{{ node }}</a>
+                <span class="node-path">{{ node.path }}</span>
             </td>
             <td class="published">
                 {% include 'LyraContentBundle:Admin:publish_actions.html.twig' with { 'object' : node } %}

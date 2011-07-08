@@ -18,6 +18,9 @@
         <service id="lyra_content.page_manager.default" class="Lyra\ContentBundle\Entity\PageManager" public="false">
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument>%lyra_content.model.page.class%</argument>
+            <call method="setNodeManager">
+                <argument type="service" id="lyra_content.node_manager" />
+            </call>
         </service>
 
         <service id="lyra_content.form.listener.page" class="Lyra\ContentBundle\Entity\NodeListener">

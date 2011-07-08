@@ -13,12 +13,30 @@ namespace Lyra\ContentBundle\Model;
 
 abstract class PageManager implements PageManagerInterface
 {
+    protected $nodeManager;
+
     public function createPage()
     {
         $class = $this->getClass();
         $page = new $class;
 
         return $page;
+    }
+
+    public function updateLinkedNode(NodeInterface $node)
+    {
+        $node->setType('page');
+        $this->getNodeManager()->normalizeNode($node);
+    }
+
+    public function setNodeManager(NodeManagerInterface $manager)
+    {
+        $this->nodeManager = $manager;
+    }
+
+    public function getNodeManager()
+    {
+        return $this->nodeManager;
     }
 }
 

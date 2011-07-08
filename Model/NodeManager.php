@@ -33,4 +33,10 @@ abstract class NodeManager implements NodeManagerInterface
             $this->saveNode($node);
         }
     }
+
+    public function normalizeNode(NodeInterface $node)
+    {
+        $path = explode('/', $node->getPath());
+        $node->setPath(implode('/', array_map('Gedmo\Sluggable\Util\Urlizer::transliterate', $path)));
+    }
 }

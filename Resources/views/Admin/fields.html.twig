@@ -20,6 +20,11 @@
                {{ form_widget(form.node.link_title) }}
             </li>
             <li>
+               {{ form_errors(form.node.path) }}
+               {{ form_label(form.node.path, 'node.path') }}
+               {{ form_widget(form.node.path) }}
+            </li>
+            <li>
                {{ form_errors(form.node.published) }}
                {{ form_label(form.node.published, 'node.published') }}
                {{ form_widget(form.node.published) }}

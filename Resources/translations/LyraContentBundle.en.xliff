@@ -15,74 +15,82 @@
                 <target>Content</target>
             </trans-unit>
             <trans-unit id="4">
+                <source>list.path</source>
+                <target>Path</target>
+            </trans-unit>
+            <trans-unit id="5">
                 <source>list.published</source>
                 <target>Published</target>
             </trans-unit>
-            <trans-unit id="5">
+            <trans-unit id="6">
                 <source>list.actions</source>
                 <target>Actions</target>
             </trans-unit>
-            <trans-unit id="6">
+            <trans-unit id="7">
                 <source>list.up</source>
                 <target>Up</target>
             </trans-unit>
-            <trans-unit id="7">
+            <trans-unit id="8">
                 <source>list.down</source>
                 <target>Down</target>
             </trans-unit>
-            <trans-unit id="8">
+            <trans-unit id="9">
                 <source>list.move</source>
                 <target>Move</target>
             </trans-unit>
-            <trans-unit id="9">
+            <trans-unit id="10">
                 <source>list.edit</source>
                 <target>Edit</target>
             </trans-unit>
-            <trans-unit id="10">
+            <trans-unit id="11">
                 <source>list.delete</source>
                 <target>Delete</target>
             </trans-unit>
-            <trans-unit id="11">
+            <trans-unit id="12">
                 <source>list.publish</source>
                 <target>Publish</target>
             </trans-unit>
-            <trans-unit id="12">
+            <trans-unit id="13">
                 <source>list.unpublish</source>
                 <target>Unpublish</target>
             </trans-unit>
-            <trans-unit id="13">
+            <trans-unit id="14">
                 <source>list.new</source>
                 <target>New content</target>
             </trans-unit>
-            <trans-unit id="14">
+            <trans-unit id="15">
                 <source>node.parent</source>
                 <target>Parent</target>
             </trans-unit>
-            <trans-unit id="15">
+            <trans-unit id="16">
                 <source>node.title</source>
                 <target>Title</target>
             </trans-unit>
-            <trans-unit id="16">
+            <trans-unit id="17">
                 <source>node.link_title</source>
                 <target>Link title</target>
             </trans-unit>
-            <trans-unit id="17">
+            <trans-unit id="18">
                 <source>node.published</source>
                 <target>Published</target>
             </trans-unit>
-            <trans-unit id="18">
+            <trans-unit id="19">
+                <source>node.path</source>
+                <target>Path</target>
+            </trans-unit>
+            <trans-unit id="20">
                 <source>item.content</source>
                 <target>Content</target>
             </trans-unit>
-            <trans-unit id="19">
+            <trans-unit id="21">
                 <source>item.meta_title</source>
                 <target>Meta title</target>
             </trans-unit>
-            <trans-unit id="20">
+            <trans-unit id="22">
                 <source>item.meta_description</source>
                 <target>Meta description</target>
             </trans-unit>
-            <trans-unit id="21">
+            <trans-unit id="23">
                 <source>item.meta_keywords</source>
                 <target>Meta keywords</target>
             </trans-unit>

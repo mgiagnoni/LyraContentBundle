@@ -36,6 +36,7 @@ class NodeFormType extends AbstractType
         $builder->add('published', 'checkbox', array('required' => false));
         $builder->add('type', 'text', array('required' => false));
         $builder->add('link_title', 'text', array('required' => false));
+        $builder->add('path', 'text', array('required' => false));
 
         $factory = $builder->getFormFactory();
         $manager = $this->manager;
