@@ -19,17 +19,17 @@
         {% for node in nodes %}
         <tr>
             <td class="order-actions">
-                {% include 'LyraContentBundle:Admin:order_actions.html.twig' with { 'node' : node } %}
+                {% include 'LyraContentBundle:Admin:order_actions.html.twig' %}
             </td>
             <td class="content lev-{{ node.depth }}">
                 <a href="{{ path('admin_content_edit', {'id' : node.id, 'type' : node.type}) }}">{{ node }}</a>
                 <span class="node-path">{{ node.path }}</span>
             </td>
             <td class="published">
-                {% include 'LyraContentBundle:Admin:publish_actions.html.twig' with { 'object' : node } %}
+                {% include 'LyraContentBundle:Admin:publish_actions.html.twig' %}
             </td>
             <td class="object-actions">
-                {% include "%s:Admin:object_actions.html.twig"|format(types[node.type]['bundle']) with { 'object' : node } %}
+                {% include "%s:Admin:object_actions.html.twig"|format(types[node.type]['bundle']) %}
             </td>
         </tr>
         {% endfor %}
