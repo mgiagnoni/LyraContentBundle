@@ -11,8 +11,6 @@
 
 namespace Lyra\ContentBundle\Model;
 
-use Lyra\ContentBundle\Model\NodeInterface;
-
 abstract class Page implements PageInterface, NodeItemInterface
 {
     protected $id;
