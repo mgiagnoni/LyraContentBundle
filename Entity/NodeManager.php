@@ -64,6 +64,16 @@ class NodeManager extends AbstractNodeManager
             ->getQuery()->getResult();
     }
 
+    public function findNodeAscendantsFilteredByPublished(NodeInterface $node, $published)
+    {
+        $qb = $this->getNodeAscendantsQueryBuilder($node);
+
+        $qb->andWhere('c.published = :pub')
+            ->setParameter('pub', $published);
+
+        return $qb->getQuery()->getResult();
+    }
+
     public function getNodeAscendantsQueryBuilder(NodeInterface $node)
     {
         $qb = $this->getNodeTreeQueryBuilder();
@@ -113,6 +123,15 @@ class NodeManager extends AbstractNodeManager
         }
 
         return $this->findNodeAscendants($node);
+    }
+
+    public function findPublishedPathNodes($path)
+    {
+        if (!$node = $this->findPublishedNodeByPath($path)) {
+            return false;
+        }
+
+        return $this->findNodeAscendantsFilteredByPublished($node, true);
     }
 
     public function findNodeContent(NodeInterface $node)

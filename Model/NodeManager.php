@@ -18,6 +18,11 @@ abstract class NodeManager implements NodeManagerInterface
         return $this->findNodeBy(array('path' => $path));
     }
 
+    public function findPublishedNodeByPath($path)
+    {
+        return $this->findNodeBy(array('path' => $path, 'published' => true));
+    }
+
     public function publishNode(NodeInterface $node)
     {
         if (!$node->isPublished()) {

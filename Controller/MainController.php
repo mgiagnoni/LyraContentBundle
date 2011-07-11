@@ -19,7 +19,7 @@ class MainController extends ContainerAware
     public function showAction($path)
     {
         $path = $this->container->get('lyra_content.node_manager')
-            ->findPathNodes(trim($path, '/'));
+            ->findPublishedPathNodes(trim($path, '/'));
         
         if (false === $path) {
             throw new NotFoundHttpException('Page not found!');

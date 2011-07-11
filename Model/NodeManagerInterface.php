@@ -15,6 +15,8 @@ interface NodeManagerInterface
 {
     function findNodeByPath($path);
 
+    function findPublishedNodeByPath($path);
+
     function findNode($nodeId);
 
     function findNodeBy(array $criteria);
@@ -36,6 +38,8 @@ interface NodeManagerInterface
     function getNodeNotDescendantsQueryBuilder(NodeInterface $node);
 
     function findPathNodes($path);
+
+    function findPublishedPathNodes($path);
 
     function findNodeContent(NodeInterface $node);
 
