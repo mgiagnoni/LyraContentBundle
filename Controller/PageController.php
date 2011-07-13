@@ -28,7 +28,7 @@ class PageController extends ContainerAware
         if ('POST' == $request->getMethod()) {
             $form->bindRequest($request);
             if ($form->isValid() && $this->container->get('lyra_content.page_manager')->savePage($page)) {
-                return new RedirectResponse($this->container->get('router')->generate('admin_content'));
+                return new RedirectResponse($this->container->get('router')->generate('lyra_content_admin_list'));
             }
         } 
 
@@ -50,7 +50,7 @@ class PageController extends ContainerAware
         if ('POST' === $request->getMethod()) {
             $form->bindRequest($request);
             if ($form->isValid() && $this->container->get('lyra_content.page_manager')->savePage($page)) {
-                return new RedirectResponse($this->container->get('router')->generate('admin_content'));
+                return new RedirectResponse($this->container->get('router')->generate('lyra_content_admin_list'));
             }
         }
 

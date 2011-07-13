@@ -4,7 +4,7 @@
 <h1>New Content</h1>
 {% endblock %}
 {% block form %}
-<form class="ly-form" action="{{ path('admin_content_new', {'type' : 'page' }) }}" method="post">
+<form class="ly-form" action="{{ path('lyra_content_admin_new', {'type' : 'page' }) }}" method="post">
     {% include 'LyraContentBundle:Admin:fields.html.twig' with { 'form': form } %}
     {{ form_row(form._token) }}
     <hr class="clear" />

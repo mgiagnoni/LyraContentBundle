@@ -3,9 +3,9 @@
 <div id="ly-list-wrapper">
     <h1>{{ 'list.title'|trans({}, 'LyraContentBundle') }}</h1>
     <div id="button-bar">
-        <a class="button action-new" href="{{ path('admin_page_new') }}">New Page</a>
+        <a class="button action-new" href="{{ path('lyra_content_admin_page_new') }}">New Page</a>
     </div>
-    <form action="{{ path('admin_content_object') }}" method="post">
+    <form action="{{ path('lyra_content_admin_object') }}" method="post">
     <table class="ly-list">
         <thead>
             <tr>
@@ -22,7 +22,7 @@
                 {% include 'LyraContentBundle:Admin:order_actions.html.twig' %}
             </td>
             <td class="content lev-{{ node.depth }}">
-                <a href="{{ path('admin_content_edit', {'id' : node.id, 'type' : node.type}) }}">{{ node }}</a>
+                <a href="{{ path('lyra_content_admin_edit', {'id' : node.id, 'type' : node.type}) }}">{{ node }}</a>
                 <span class="node-path">{{ node.path }}</span>
             </td>
             <td class="published">

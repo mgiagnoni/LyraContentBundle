@@ -1,4 +1,4 @@
-<a href="{{ path('admin_page_edit', { 'id' : node.id }) }}" class="button action-edit icon-only">{{ 'list.edit'|trans({}, 'LyraContentBundle') }}</a>
+<a href="{{ path('lyra_content_admin_page_edit', { 'id' : node.id }) }}" class="button action-edit icon-only">{{ 'list.edit'|trans({}, 'LyraContentBundle') }}</a>
 {% if not node.isRoot %}
-<a href="{{ path('admin_content_delete', { 'id' : node.id }) }}" class="button action-delete icon-only">{{ 'list.delete'|trans({}, 'LyraContentBundle') }}</a>
+<a href="{{ path('lyra_content_admin_delete', { 'id' : node.id }) }}" class="button action-delete icon-only">{{ 'list.delete'|trans({}, 'LyraContentBundle') }}</a>
 {% endif %}

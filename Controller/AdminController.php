@@ -48,7 +48,7 @@ class AdminController extends ContainerAware
         $children = $manager->findNodeDescendants($node);
         if ('POST' === $this->container->get('request')->getMethod()) {
             $manager->removeNode($node);
-            return new RedirectResponse($this->container->get('router')->generate('admin_content'));
+            return new RedirectResponse($this->container->get('router')->generate('lyra_content_admin_list'));
         }
         
         return $this->container->get('templating')
@@ -74,7 +74,7 @@ class AdminController extends ContainerAware
         if ('POST' === $request->getMethod()) {
             $form->bindRequest($request);
             if ($form->isValid() && $manager->saveNode($node)) {
-                return new RedirectResponse($this->container->get('router')->generate('admin_content'));
+                return new RedirectResponse($this->container->get('router')->generate('lyra_content_admin_list'));
             }
         }
         
@@ -113,6 +113,6 @@ class AdminController extends ContainerAware
                 break;
         }
         
-        return new RedirectResponse($this->container->get('router')->generate('admin_content'));
+        return new RedirectResponse($this->container->get('router')->generate('lyra_content_admin_list'));
     }
 }

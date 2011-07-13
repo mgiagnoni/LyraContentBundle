@@ -1,40 +1,31 @@
-admin_page_edit:
+lyra_content_admin_page_edit:
     pattern:  /admin/page/{id}/edit
     defaults: { _controller: LyraContentBundle:Page:edit }
 
-admin_page_new:
+lyra_content_admin_page_new:
     pattern:  /admin/page/new
     defaults: { _controller: LyraContentBundle:Page:new }
 
-admin_content:
+lyra_content_admin_list:
     pattern:  /admin/content
     defaults: { _controller: LyraContentBundle:Admin:index }
 
-admin_content_new:
+lyra_content_admin_new:
     pattern:  /admin/{type}/new
     defaults: { _controller: LyraContentBundle:Admin:new }
-    
-admin_content_edit:
+
+lyra_content_admin_edit:
   pattern:  /admin/{type}/{id}/edit
   defaults: { _controller: LyraContentBundle:Admin:edit }
-  
-admin_content_delete:
+
+lyra_content_admin_delete:
   pattern:  /admin/content/{id}/delete
   defaults: { _controller: LyraContentBundle:Admin:delete }
-  
-admin_content_move:
+
+lyra_content_admin_move:
   pattern:  /admin/content/{id}/move
   defaults: { _controller: LyraContentBundle:Admin:move }
-  
-admin_content_object:
+
+lyra_content_admin_object:
     pattern:  /admin/content/object
     defaults: { _controller: LyraContentBundle:Admin:object }
-
-homepage:
-    pattern: /
-    defaults: { _controller: LyraContentBundle:Main:home }
-      
-content_show:
-    pattern: /{path}
-    defaults: { _controller: LyraContentBundle:Main:show }
-    requirements: { path: .* }
