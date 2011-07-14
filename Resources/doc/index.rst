@@ -76,3 +76,68 @@ Publish bundle assets
 
     app/console assets:install web
 
+Configure mapping
+-----------------
+
+This step is not needed if the configuration parameter ``auto-mapping``
+is set to **true** as in default Symfony2 *Standard Edition* configuration::
+
+    # app/config/config.yml
+
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        entity_managers:
+            default:
+                mappings:
+                    LyraContentBundle: { type: yml }
+
+Enable translator
+-----------------
+
+Translator must be always enabled as all messages in templates are *keywords*
+while actual text is in translation catalogues::
+
+    # app/config/config.yml
+
+    framework:
+        translator: { fallback: en }
+
+Import routing configuration
+----------------------------
+
+::
+
+    # app/config/routing.yml
+
+    lyra_content_backend:
+        resource: "@LyraContentBundle/Resources/config/routing/backend.yml"
+        prefix: /admin
+
+    lyra_content_frontend:
+        resource: "@LyraContentBundle/Resources/config/routing/frontend.yml"
+
+Routing configuration file for frontend contains a *catch all* route and
+should be imported as the **last entry** of your ``app/config/routing.yml``
+file.
+
+Customize base application template
+-----------------------------------
+
+LyraContentBundle comes with a **jQuery UI** based backend. All the needed
+javascript and css files are included within the *stylesheets* and
+*javascripts_head* blocks. Add these blocks to your base application template,
+the first is already included if you have based your application on Symfony
+*Standard Edition*::
+
+    {# app/Resources/views/base.html.twig #}
+
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <title>{% block title %}{% endblock %}</title>
+            {% block javascripts_head %}{% endblock %}
+            {% block stylesheets %}{% endblock %}
+            <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        </head>
+    {# ... #}
