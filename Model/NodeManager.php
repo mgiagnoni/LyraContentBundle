@@ -13,6 +13,14 @@ namespace Lyra\ContentBundle\Model;
 
 abstract class NodeManager implements NodeManagerInterface
 {
+    public function createNode()
+    {
+        $class = $this->getClass();
+        $node = new $class;
+
+        return $node;
+    }
+
     public function findNodeByPath($path)
     {
         return $this->findNodeBy(array('path' => $path));

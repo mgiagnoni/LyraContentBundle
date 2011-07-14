@@ -47,6 +47,11 @@ class NodeManager extends AbstractNodeManager
             ->getResult();
     }
 
+    public function findRootNode()
+    {
+        return $this->repository->findOneBy(array('lvl' => 0));
+    }
+
     public function getNodeTreeQueryBuilder()
     {
         $qb = $this->repository
