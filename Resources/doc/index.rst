@@ -141,3 +141,56 @@ the first is already included if you have based your application on Symfony
             <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
         </head>
     {# ... #}
+
+Update database schema
+----------------------
+
+::
+
+    app/console doctrine:schema:update
+
+Create content root node
+------------------------
+
+The content tree root node (homepage) is currently created with a console
+command::
+
+    app/console lyra:content:init
+
+Finally
+-------
+
+As usual do not forget::
+
+    app/console cache:clear
+
+Try it out
+==========
+
+Access admin area
+-----------------
+
+::
+
+    .../app_dev.php/admin/content
+
+You should see a list of contents (only home page is present). Create a
+new page: leave `Home` as *parent* (only choice possible), enter `Page` as
+*title*, leave *path* blank, select *published* and enter some content.
+Save the page.
+
+Show content in frontend
+------------------------
+
+Visit::
+
+    .../app_dev.php/page
+
+You will see the page you have just created. Go back to admin area to create
+more content. You can try to add a sub-page, selecting the first page you
+have created as parent.
+
+Note that the *path* field is auto-generated if left blank when a new page is
+created. In any case it can be customized by editing the page.
+
+These are only the basic features. More work is needed.
