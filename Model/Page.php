@@ -13,16 +13,34 @@ namespace Lyra\ContentBundle\Model;
 
 abstract class Page implements PageInterface, NodeItemInterface
 {
+    /**
+     * @var mixed
+     */
     protected $id;
 
+    /**
+     * @var string
+     */
     protected $content;
 
+    /**
+     * @var string
+     */
     protected $metaTitle;
 
+    /**
+     * @var string
+     */
     protected $metaDescription;
-    
+
+    /**
+     * @var string
+     */
     protected $metaKeywords;
 
+    /**
+     * @var NodeInterface
+     */
     protected $node;
 
     public function getId()

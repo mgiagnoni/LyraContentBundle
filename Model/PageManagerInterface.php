@@ -11,12 +11,30 @@
 
 namespace Lyra\ContentBundle\Model;
 
+/**
+ * Interface implemented by page managers.
+ */
 interface PageManagerInterface
 {
+    /**
+     * Creates an empty page object.
+     *
+     * @return PageInterface
+     */
     function createPage();
 
+    /**
+     * Returns a page selected by linked node id.
+     *
+     * @param mixed $nodeId
+     */
     function findPageByNodeId($nodeId);
 
+    /**
+     * Persists a page object to the database.
+     *
+     * @param PageInterface $page
+     */
     function savePage(PageInterface $page);
 }
 

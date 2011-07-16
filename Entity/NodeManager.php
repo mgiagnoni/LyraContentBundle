@@ -15,11 +15,29 @@ use Doctrine\ORM\EntityManager;
 use Lyra\ContentBundle\Model\NodeManager as AbstractNodeManager;
 use Lyra\ContentBundle\Model\NodeInterface;
 
+/**
+ * Manager of node entities
+ */
 class NodeManager extends AbstractNodeManager
 {
+    /**
+     * @var Doctrine\ORM\EntityManager
+     */
     protected $em;
+
+    /**
+     * @var Doctrine\ORM\EntityRepository;
+     */
     protected $repository;
+
+    /**
+     * @var string entity class name
+     */
     protected $class;
+
+    /**
+     * @var array content types informations
+     */
     protected $types;
 
     public function __construct(EntityManager $em, $class, $types)
@@ -30,16 +48,25 @@ class NodeManager extends AbstractNodeManager
         $this->types = $types;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function findNode($nodeId)
     {
         return $this->repository->find($nodeId);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function findNodeBy(array $criteria)
     {
         return $this->repository->findOneBy($criteria);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function findAllNodes()
     {
         return $this->getNodeTreeQueryBuilder()
@@ -47,11 +74,17 @@ class NodeManager extends AbstractNodeManager
             ->getResult();
     }
 
+    /**
+     * Returns the root node.
+     */
     public function findRootNode()
     {
         return $this->repository->findOneBy(array('lvl' => 0));
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getNodeTreeQueryBuilder()
     {
         $qb = $this->repository
@@ -62,13 +95,22 @@ class NodeManager extends AbstractNodeManager
 
         return $qb;
     }
-    
+
+    /**
+     * {@inheritdoc}
+     */
     public function findNodeAscendants(NodeInterface $node)
     {
         return $this->getNodeAscendantsQueryBuilder($node)
             ->getQuery()->getResult();
     }
 
+    /**
+     * Returns ascendants of a given node filtered by published status.
+     *
+     * @param NodeInterface $node
+     * @param Boolean $published
+     */
     public function findNodeAscendantsFilteredByPublished(NodeInterface $node, $published)
     {
         $qb = $this->getNodeAscendantsQueryBuilder($node);
@@ -79,6 +121,11 @@ class NodeManager extends AbstractNodeManager
         return $qb->getQuery()->getResult();
     }
 
+    /**
+     * Returns the Query Builder to select node ascendants.
+     *
+     * @param NodeInterface $node
+     */
     public function getNodeAscendantsQueryBuilder(NodeInterface $node)
     {
         $qb = $this->getNodeTreeQueryBuilder();
@@ -89,12 +136,20 @@ class NodeManager extends AbstractNodeManager
         return $qb;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function findNodeDescendants(NodeInterface $node)
     {
         return $this->getNodeDescendantsQueryBuilder($node)
             ->getQuery()->getResult();
     }
 
+    /**
+     * Returns the Query Builder to select node descendants.
+     *
+     * @param NodeInterface $node
+     */
     public function getNodeDescendantsQueryBuilder(NodeInterface $node)
     {
         $qb = $this->getNodeTreeQueryBuilder();
@@ -105,12 +160,21 @@ class NodeManager extends AbstractNodeManager
         return $qb;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function findNodeNotDescendants(NodeInterface $node)
     {
         return $this->getNodeNotDescendantsQueryBuilder($node)
             ->getQuery()->getResult();
     }
 
+    /**
+     * Returns the Query Builder to select all nodes that are *not*
+     * descendants of a given node.
+     *
+     * @param NodeInterface $node
+     */
     public function getNodeNotDescendantsQueryBuilder(NodeInterface $node)
     {
         $qb = $this->getNodeTreeQueryBuilder();
@@ -121,6 +185,9 @@ class NodeManager extends AbstractNodeManager
         return $qb;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function findPathNodes($path)
     {
         if (!$node = $this->findNodeByPath($path)) {
@@ -130,6 +197,9 @@ class NodeManager extends AbstractNodeManager
         return $this->findNodeAscendants($node);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function findPublishedPathNodes($path)
     {
         if (!$node = $this->findPublishedNodeByPath($path)) {
@@ -139,6 +209,9 @@ class NodeManager extends AbstractNodeManager
         return $this->findNodeAscendantsFilteredByPublished($node, true);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function findNodeContent(NodeInterface $node)
     {
         $model = $this->types[$node->getType()]['model'];
@@ -147,16 +220,25 @@ class NodeManager extends AbstractNodeManager
             ->findOneBy(array('node' => $node->getId()));
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function moveNodeUp(NodeInterface $node, $step = 1)
     {
         $this->repository->moveUp($node, $step);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function moveNodeDown(NodeInterface $node, $step = 1)
     {
         $this->repository->moveDown($node, $step);
     }
-    
+
+    /**
+     * {@inheritdoc}
+     */
     public function saveNode(NodeInterface $node)
     {
         $this->em->persist($node);
@@ -164,13 +246,19 @@ class NodeManager extends AbstractNodeManager
 
         return true;
     }
-    
+
+    /**
+     * {@inheritdoc}
+     */
     public function removeNode(NodeInterface $node)
     {
         $this->em->remove($node);
         $this->em->flush();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getClass()
     {
         return $this->class;

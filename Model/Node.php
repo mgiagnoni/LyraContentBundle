@@ -13,22 +13,49 @@ namespace Lyra\ContentBundle\Model;
 
 abstract class Node implements NodeInterface
 {
+    /**
+     * @var mixed
+     */
     protected $id;
 
+    /**
+     * @var string
+     */
     protected $title;
 
+    /**
+     * @var string
+     */
     protected $link_title;
 
+    /**
+     * @var string
+     */
     protected $slug;
 
+    /**
+     * @var string
+     */
     protected $path;
 
+    /**
+     * @var Boolean
+     */
     protected $published;
 
+    /**
+     * @var string
+     */
     protected $type;
 
+    /**
+     * @var NodeInterface
+     */
     protected $parent;
 
+    /**
+     * @var Doctrine\Common\Collections\ArrayCollection
+     */
     protected $children;
 
     public function getId()

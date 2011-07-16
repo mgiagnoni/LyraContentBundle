@@ -16,9 +16,14 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
-
+/**
+ * Controller managing actions to administer nodes.
+ */
 class AdminController extends ContainerAware
 {
+    /**
+     * Displays a list of nodes.
+     */
     public function indexAction()
     {
         $nodes = $this->container->get('lyra_content.node_manager')
@@ -31,7 +36,12 @@ class AdminController extends ContainerAware
                 'types' => $this->container->getParameter('lyra_content.types')
             ));
     }
-    
+
+    /**
+     * Deletes a node.
+     *
+     * @param mixed $id node id
+     */
     public function deleteAction($id)
     {
         $manager =  $this->container->get('lyra_content.node_manager');
@@ -57,7 +67,12 @@ class AdminController extends ContainerAware
                 'children' => $children
             ));
     }
-    
+
+    /**
+     * Moves a sub-tree (node + all its descendants) under a new parent.
+     *
+     * @param mixed $id node id
+     */
     public function moveAction($id)
     {
         $manager =  $this->container->get('lyra_content.node_manager');
@@ -84,7 +99,10 @@ class AdminController extends ContainerAware
                 'content' => $node
             ));
     }
-    
+
+    /**
+     * Moves up/down, publish/unpublish node.
+     */
     public function objectAction()
     {
         $reqAction = $this->container->get('request')->get('action');

@@ -13,6 +13,9 @@ namespace Lyra\ContentBundle\Entity;
 
 use Lyra\ContentBundle\Model\Page as AbstractPage;
 
+/**
+ * Page entity
+ */
 class Page extends AbstractPage
 {
 }

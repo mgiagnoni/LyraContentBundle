@@ -15,10 +15,24 @@ use Doctrine\ORM\EntityManager;
 use Lyra\ContentBundle\Model\PageInterface;
 use Lyra\ContentBundle\Model\PageManager as AbstractPageManager;
 
+/**
+ * Manager of page entities
+ */
 class PageManager extends AbstractPageManager
 {
+    /**
+     * @var Doctrine\ORM\EntityManager
+     */
     protected $em;
+
+    /**
+     * @var Doctrine\ORM\EntityRepository;
+     */
     protected $repository;
+
+    /**
+     * @var string entity class name
+     */
     protected $class;
 
     public function __construct(EntityManager $em, $class)
@@ -28,6 +42,9 @@ class PageManager extends AbstractPageManager
         $this->class = $class;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function findPageByNodeId($nodeId)
     {
         $qb = $this->repository
@@ -40,6 +57,9 @@ class PageManager extends AbstractPageManager
         return $qb->getQuery()->getSingleResult();
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function savePage(PageInterface $page)
     {
         $this->updateLinkedNode($page->getNode());

@@ -14,8 +14,16 @@ namespace Lyra\ContentBundle\Controller;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+/**
+ * Controller to show content in frontend.
+ */
 class MainController extends ContainerAware
 {
+    /**
+     * Displays a content item.
+     *
+     * @param string $path node path
+     */
     public function showAction($path)
     {
         $path = $this->container->get('lyra_content.node_manager')

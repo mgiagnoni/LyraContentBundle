@@ -13,12 +13,24 @@ namespace Lyra\ContentBundle\Entity;
 
 use Lyra\ContentBundle\Model\Node as AbstractNode;
 
+/**
+ * Node entity
+ */
 class Node extends AbstractNode
 {
+    /**
+     * @var integer
+     */
     protected $lft;
 
+    /**
+     * @var integer
+     */
     protected $rgt;
 
+    /**
+     * @var integer
+     */
     protected $lvl;
 
     public function getLeft()

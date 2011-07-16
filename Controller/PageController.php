@@ -14,8 +14,14 @@ namespace Lyra\ContentBundle\Controller;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
+/**
+ * Controller managing actions to administer pages.
+ */
 class PageController extends ContainerAware
 {
+    /**
+     * Creates a new page.
+     */
     public function newAction()
     {
         $page = $this->container->get('lyra_content.page_manager')
@@ -37,7 +43,12 @@ class PageController extends ContainerAware
                 'form' => $form->createView(),
             ));
     }
-    
+
+    /**
+     * Edits a page.
+     *
+     * @param mixed id page id
+     */
     public function editAction($id)
     {
         $page = $this->container->get('lyra_content.page_manager')
