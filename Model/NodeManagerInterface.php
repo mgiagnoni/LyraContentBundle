@@ -37,21 +37,11 @@ interface NodeManagerInterface
     function findAllNodes();
 
     /**
-     * Returns the Query Builder to select all nodes ordered as tree.
-     */
-    function getNodeTreeQueryBuilder();
-
-    /**
      * Returns all ascendants of a given node.
      *
      * @param NodeInterface $node
      */
     function findNodeAscendants(NodeInterface $node);
-
-    /**
-     * Returns the Query Builder to select node ascendants.
-     */
-    function getNodeAscendantsQueryBuilder(NodeInterface $node);
 
     /**
      * Returns all descendants of a given node.
@@ -61,24 +51,11 @@ interface NodeManagerInterface
     function findNodeDescendants(NodeInterface $node);
 
     /**
-     * Returns the Query Builder to select node descendants.
-     */
-    function getNodeDescendantsQueryBuilder(NodeInterface $node);
-
-    /**
      * Returns all nodes that are *not* descendants of a given node.
      *
      * @param NodeInterface $node
      */
     function findNodeNotDescendants(NodeInterface $node);
-
-    /**
-     * Returns the Query Builder to select all nodes that are *not*
-     * descendants of a given node.
-     *
-     * @param NodeInterface $node
-     */
-    function getNodeNotDescendantsQueryBuilder(NodeInterface $node);
 
     /**
      * Returns all ascendants of a given node selected by path.

@@ -83,7 +83,7 @@ class NodeManager extends AbstractNodeManager
     }
 
     /**
-     * {@inheritdoc}
+     * Returns the Query Builder to select all nodes ordered as tree.
      */
     public function getNodeTreeQueryBuilder()
     {
