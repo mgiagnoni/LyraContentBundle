@@ -17,8 +17,17 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 
+/**
+ * Configures the Dependency Injection container.
+ */
 class LyraContentExtension extends Extension
 {
+    /**
+     * Loads and processes configuration files.
+     *
+     * @param array $configs
+     * @param ContainerBuilder $container
+     */
     public function load(array $configs, ContainerBuilder $container)
     {
         $bundles = array();

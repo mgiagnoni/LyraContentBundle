@@ -13,14 +13,27 @@ namespace Lyra\ContentBundle\Model;
 
 interface NodeManagerInterface
 {
+    /**
+     * Returns a node selected by path.
+     *
+     * @param string $path
+     * @return NodeInterface|null
+     */
     function findNodeByPath($path);
 
+    /**
+     * Returns a node selected by path and published.
+     *
+     * @param string $path
+     * @return NodeInterface|null
+     */
     function findPublishedNodeByPath($path);
 
     /**
      * Returns a node selected by primary key.
      *
      * @param integer $nodeId
+     * @return NodeInterface|null
      */
     function findNode($nodeId);
 
@@ -28,11 +41,14 @@ interface NodeManagerInterface
      * Returns a node selected by given criteria.
      *
      * @param array $criteria
+     * @return NodeInterface|null
      */
     function findNodeBy(array $criteria);
 
     /**
      * Returns all nodes ordered as tree.
+     *
+     * @return array
      */
     function findAllNodes();
 
@@ -40,6 +56,7 @@ interface NodeManagerInterface
      * Returns all ascendants of a given node.
      *
      * @param NodeInterface $node
+     * @return array
      */
     function findNodeAscendants(NodeInterface $node);
 
@@ -47,6 +64,7 @@ interface NodeManagerInterface
      * Returns all descendants of a given node.
      *
      * @param NodeInterface $node
+     * @return array
      */
     function findNodeDescendants(NodeInterface $node);
 
@@ -54,6 +72,7 @@ interface NodeManagerInterface
      * Returns all nodes that are *not* descendants of a given node.
      *
      * @param NodeInterface $node
+     * @return array
      */
     function findNodeNotDescendants(NodeInterface $node);
 
@@ -61,6 +80,7 @@ interface NodeManagerInterface
      * Returns all ascendants of a given node selected by path.
      *
      * @param string $path node path
+     * @array|false
      */
     function findPathNodes($path);
 
@@ -68,6 +88,7 @@ interface NodeManagerInterface
      * Returns all published ascendants of a given node selected by path.
      *
      * @param string $path node path
+     * @return array|false
      */
     function findPublishedPathNodes($path);
 
@@ -75,6 +96,7 @@ interface NodeManagerInterface
      * Returns a content item linked to a given node.
      *
      * @param NodeInterface $node
+     * @return NodeItemInterface
      */
     function findNodeContent(NodeInterface $node);
 
@@ -124,6 +146,8 @@ interface NodeManagerInterface
 
     /**
      * Returns the name of concrete class (entity/document).
+     *
+     * @return string
      */
     function getClass();
 }

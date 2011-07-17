@@ -76,6 +76,8 @@ class NodeManager extends AbstractNodeManager
 
     /**
      * Returns the root node.
+     *
+     * @return NodeInterface
      */
     public function findRootNode()
     {
@@ -84,6 +86,8 @@ class NodeManager extends AbstractNodeManager
 
     /**
      * Returns the Query Builder to select all nodes ordered as tree.
+     *
+     * @return Doctrine\ORM\QueryBuilder 
      */
     public function getNodeTreeQueryBuilder()
     {
@@ -110,6 +114,7 @@ class NodeManager extends AbstractNodeManager
      *
      * @param NodeInterface $node
      * @param Boolean $published
+     * @return array
      */
     public function findNodeAscendantsFilteredByPublished(NodeInterface $node, $published)
     {
@@ -125,6 +130,7 @@ class NodeManager extends AbstractNodeManager
      * Returns the Query Builder to select node ascendants.
      *
      * @param NodeInterface $node
+     * @return Doctrine\ORM\QueryBuilder
      */
     public function getNodeAscendantsQueryBuilder(NodeInterface $node)
     {
@@ -149,6 +155,7 @@ class NodeManager extends AbstractNodeManager
      * Returns the Query Builder to select node descendants.
      *
      * @param NodeInterface $node
+     * @return Doctrine\ORM\QueryBuilder
      */
     public function getNodeDescendantsQueryBuilder(NodeInterface $node)
     {
@@ -174,6 +181,7 @@ class NodeManager extends AbstractNodeManager
      * descendants of a given node.
      *
      * @param NodeInterface $node
+     * @return Doctrine\ORM\QueryBuilder
      */
     public function getNodeNotDescendantsQueryBuilder(NodeInterface $node)
     {

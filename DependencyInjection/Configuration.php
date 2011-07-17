@@ -14,6 +14,9 @@ namespace Lyra\ContentBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
+/**
+ * Bundle configuration.
+ */
 class Configuration implements ConfigurationInterface
 {
     protected $bundles;
@@ -23,6 +26,11 @@ class Configuration implements ConfigurationInterface
         $this->bundles = $bundles;
     }
 
+    /**
+     * Generates the configuration tree.
+     *
+     * @return TreeBuilder
+     */
     public function getConfigTreeBuilder()
     {
         $bundles = $this->bundles;

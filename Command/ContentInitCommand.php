@@ -15,8 +15,14 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Command to initialize content table by creating a root node.
+ */
 class ContentInitCommand extends ContainerAwareCommand
 {
+    /**
+     * @see Symfony\Component\Console\Command
+     */
     protected function configure()
     {
         $this
@@ -30,6 +36,9 @@ EOT
             );
     }
 
+    /**
+     * @see Symfony\Component\Console\Command
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $nodeManager = $this->getContainer()->get('lyra_content.node_manager');
