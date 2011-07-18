@@ -14,6 +14,13 @@ namespace Lyra\ContentBundle\Model;
 interface NodeManagerInterface
 {
     /**
+     * Creates an empty node object.
+     *
+     * @return NodeInterface
+     */
+    function createNode();
+
+    /**
      * Returns a node selected by path.
      *
      * @param string $path
@@ -51,6 +58,13 @@ interface NodeManagerInterface
      * @return array
      */
     function findAllNodes();
+
+    /**
+     * Returns the root node.
+     *
+     * @return NodeInterface
+     */
+    function findRootNode();
 
     /**
      * Returns all ascendants of a given node.
