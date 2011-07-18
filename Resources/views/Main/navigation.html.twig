@@ -1,0 +1,9 @@
+{% if nodes|length %}
+<ol>
+    {% for node in nodes %}
+    <li>
+        <a href="{{ path('lyra_content_show', {'path': node.path}) }}">{{ node.title }}</a>
+    </li>
+    {% endfor %}
+</ol>
+{% endif %}

@@ -152,6 +152,23 @@ class NodeManager extends AbstractNodeManager
     }
 
     /**
+     * Returns all published descendants of a given node up to a max depth.
+     *
+     * @param NodeInterface $node
+     * @param integer $depth max depth relative to $node's depth
+     * @return array
+     */
+    public function findNodePublishedDescendantsFilteredByDepth(NodeInterface $node, $depth = 1)
+    {
+        $qb = $this->getNodeDescendantsQueryBuilder($node);
+        $qb->andWhere('c.published = true')
+            ->andWhere('c.lvl - ' . $node->getLevel() . ' <= :d')
+            ->setParameter('d', $depth);
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
      * Returns the Query Builder to select node descendants.
      *
      * @param NodeInterface $node

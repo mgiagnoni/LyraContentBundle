@@ -83,6 +83,15 @@ interface NodeManagerInterface
     function findNodeDescendants(NodeInterface $node);
 
     /**
+     * Returns all published descendants of a given node up to a max depth.
+     *
+     * @param NodeInterface $node
+     * @param integer $depth max depth relative to $node's depth
+     * @return array
+     */
+    function findNodePublishedDescendantsFilteredByDepth(NodeInterface $node, $depth);
+
+    /**
      * Returns all nodes that are *not* descendants of a given node.
      *
      * @param NodeInterface $node

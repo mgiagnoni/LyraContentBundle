@@ -11,3 +11,6 @@
 {% block content %}
     {{ item.content }}
 {% endblock %}
+{% block navigation %}
+    {% render 'LyraContentBundle:Main:navigation' with {'node' : node, 'depth': 1} %}
+{% endblock %}

@@ -48,4 +48,15 @@ class MainController extends ContainerAware
                 'item' => $item
             ));
     }
+
+    public function navigationAction($node, $depth)
+    {
+        $nodes = $this->container->get('lyra_content.node_manager')
+            ->findNodePublishedDescendantsFilteredByDepth($node, $depth);
+
+        return $this->container->get('templating')
+            ->renderResponse('LyraContentBundle:Main:navigation.html.twig', array(
+                'nodes' => $nodes
+            ));
+    }
 }
