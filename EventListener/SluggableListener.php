@@ -2,7 +2,7 @@
 
 /*
  * This file is part of the LyraContentBundle package.
- * 
+ *
  * Copyright 2011 Massimo Giagnoni <gimassimo@gmail.com>
  *
  * This source file is subject to the MIT license. Full copyright and license
@@ -13,6 +13,7 @@ namespace Lyra\ContentBundle\EventListener;
 
 use Gedmo\Sluggable\SluggableListener as BaseSluggableListener;
 use Doctrine\Common\EventArgs;
+use Lyra\ContentBundle\Model\NodeInterface;
 
 class SluggableListener extends BaseSluggableListener
 {
@@ -26,7 +27,7 @@ class SluggableListener extends BaseSluggableListener
 
         foreach ($ea->getScheduledObjectInsertions($uow) as $object) {
             $meta = $om->getClassMetadata(get_class($object));
-            if ($this->getConfiguration($om, $meta->name) && null !== $object->getParent()) {
+            if ($object instanceof NodeInterface && null !== $object->getParent()) {
                  $object->setPath($object->getPath() . $object->getSlug());
                  $uow->recomputeSingleEntityChangeSet($meta, $object);
             }

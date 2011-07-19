@@ -2,7 +2,7 @@
 
 /*
  * This file is part of the LyraContentBundle package.
- * 
+ *
  * Copyright 2011 Massimo Giagnoni <gimassimo@gmail.com>
  *
  * This source file is subject to the MIT license. Full copyright and license
@@ -13,6 +13,7 @@ namespace Lyra\ContentBundle\EventListener;
 
 use Gedmo\Tree\TreeListener as BaseTreeListener;
 use Doctrine\Common\EventArgs;
+use Lyra\ContentBundle\Model\NodeInterface;
 
 class TreeListener extends BaseTreeListener
 {
@@ -26,7 +27,7 @@ class TreeListener extends BaseTreeListener
 
         foreach ($ea->getScheduledObjectInsertions($uow) as $object) {
             $meta = $om->getClassMetadata(get_class($object));
-            if ($this->getConfiguration($om, $meta->name) && null !== $parent = $object->getParent()) {
+            if ($object instanceof NodeInterface && null !== $parent = $object->getParent()) {
                 $object->setPath(($parent->getPath() ? $parent->getPath() . '/' : '') . $object->getPath());
                 $uow->recomputeSingleEntityChangeSet($meta, $object);
             }
