@@ -1,12 +1,11 @@
 {% extends "LyraContentBundle:Admin:form.html.twig" %}
-{% form_theme form 'LyraContentBundle:Admin:form_theme.html.twig' %}
 {% block form_title %}
 <h1>Edit Content</h1>
 {% endblock %}
 {% block form %}
     {{ form_errors(form) }}
     <form class="ly-form" action="{{ path('lyra_content_admin_edit', { 'id': node.id, 'type' : node.type }) }}" method="post">
-        {% include 'LyraContentBundle:Admin:fields.html.twig' with { 'form': form } %}
+        {% include 'LyraContentBundle:Admin:fields.html.twig' %}
         {{ form_row(form._token) }}
         <hr class="clear" />
         <input type="submit" value="Save" />
