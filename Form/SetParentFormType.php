@@ -2,7 +2,7 @@
 
 /*
  * This file is part of the LyraContentBundle package.
- * 
+ *
  * Copyright 2011 Massimo Giagnoni <gimassimo@gmail.com>
  *
  * This source file is subject to the MIT license. Full copyright and license
@@ -32,10 +32,10 @@ class SetParentFormType extends AbstractType
             'class' => $options['data_class'],
             'query_builder' => $this->manager->getNodeTreeQueryBuilder()
         ));
-        
+
         $factory = $builder->getFormFactory();
         $manager = $this->manager;
-        
+
         $buildParent = function ($form, $node) use ($factory, $manager, $options) {
             $form->add($factory->createNamed('entity', 'parent', null, array(
                'class' => $options['data_class'],
@@ -43,7 +43,7 @@ class SetParentFormType extends AbstractType
                'label' => 'Parent',
            )));
         };
-           
+
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function
             (DataEvent $event) use ($buildParent) {
                $form = $event->getForm();
@@ -53,5 +53,10 @@ class SetParentFormType extends AbstractType
                    $buildParent($form, $data);
                }
             });
+    }
+
+    public function getName()
+    {
+        return 'lyra_content_set_parent';
     }
 }

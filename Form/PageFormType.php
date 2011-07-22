@@ -2,7 +2,7 @@
 
 /*
  * This file is part of the LyraContentBundle package.
- * 
+ *
  * Copyright 2011 Massimo Giagnoni <gimassimo@gmail.com>
  *
  * This source file is subject to the MIT license. Full copyright and license
@@ -22,6 +22,11 @@ class PageFormType extends AbstractType
         $builder->add('meta_title', 'text', array('required' => false));
         $builder->add('meta_description', 'textarea', array('required' => false));
         $builder->add('meta_keywords', 'textarea', array('required' => false));
+    }
+
+    public function getName()
+    {
+        return 'lyra_content_page';
     }
 }
 
