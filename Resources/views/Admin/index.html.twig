@@ -3,7 +3,7 @@
 <div id="ly-list-wrapper">
     <h1>{{ 'list.title'|trans({}, 'LyraContentBundle') }}</h1>
     <div id="button-bar">
-        <a class="button action-new" href="{{ path('lyra_content_admin_page_new') }}">New Page</a>
+        <a class="button action-new" href="{{ path('lyra_content_admin_page_new') }}">{{ 'list.new'|trans({}, 'LyraContentBundle') }}</a>
     </div>
     <form action="{{ path('lyra_content_admin_object') }}" method="post">
     <table class="ly-list">

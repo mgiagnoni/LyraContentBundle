@@ -94,6 +94,62 @@
                 <source>item.meta_keywords</source>
                 <target>Meta keywords</target>
             </trans-unit>
+            <trans-unit id="24">
+                <source>form.edit.title</source>
+                <target>Edit content</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>form.edit.submit</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>form.new.title</source>
+                <target>New content</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>form.new.submit</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>form.delete.title</source>
+                <target>Delete content</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>form.delete.submit</source>
+                <target>Yes, delete</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>form.delete.cancel</source>
+                <target>No, abort</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>form.move.title</source>
+                <target>Move content</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>form.move.submit</source>
+                <target>Move</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>form.move.cancel</source>
+                <target>Abort</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>form.back</source>
+                <target>Go back</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>form.delete.confirmation</source>
+                <target>The following content items will be permanently deleted:</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>form.delete.confirmation2</source>
+                <target>This operation cannot be undone, please confirm.</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>form.move.confirmation</source>
+                <target>Select a new parent for content item '%content%' (and all its descendants):</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

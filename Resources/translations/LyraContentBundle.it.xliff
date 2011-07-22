@@ -95,8 +95,60 @@
                 <target>Meta keywords</target>
             </trans-unit>
             <trans-unit id="24">
-                <source>item.type</source>
-                <target>Tipo</target>
+                <source>form.edit.title</source>
+                <target>Modifica contenuto</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>form.edit.submit</source>
+                <target>Salva</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>form.new.title</source>
+                <target>Nuovo contenuto</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>form.new.submit</source>
+                <target>Salva</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>form.delete.title</source>
+                <target>Cancella contenuto</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>form.delete.submit</source>
+                <target>Sì, cancella</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>form.delete.cancel</source>
+                <target>No, annulla</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>form.move.title</source>
+                <target>Muovi contenuto</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>form.move.submit</source>
+                <target>Muovi</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>form.move.cancel</source>
+                <target>Annulla</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>form.back</source>
+                <target>Indietro</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>form.delete.confirmation</source>
+                <target>I seguenti contenuti saranno cancellati definitivamente:</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>form.delete.confirmation2</source>
+                <target>L'operazione non potrà essere annullata, dare conferma.</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>form.move.confirmation</source>
+                <target>Seleziona un nuovo padre per il contenuto '%content%' (e tutti i suoi discendenti):</target>
             </trans-unit>
         </body>
     </file>
