@@ -15,7 +15,8 @@ Lyra\ContentBundle\Entity\Node:
             type: string
             length: 255
             gedmo:
-                - sluggable
+                sluggable:
+                    slugField: slug
         slug:
             type: string
             length: 255
