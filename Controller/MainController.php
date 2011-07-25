@@ -2,7 +2,7 @@
 
 /*
  * This file is part of the LyraContentBundle package.
- * 
+ *
  * Copyright 2011 Massimo Giagnoni <gimassimo@gmail.com>
  *
  * This source file is subject to the MIT license. Full copyright and license
@@ -28,7 +28,7 @@ class MainController extends ContainerAware
     {
         $path = $this->container->get('lyra_content.node_manager')
             ->findPublishedPathNodes(trim($path, '/'));
-        
+
         if (false === $path) {
             throw new NotFoundHttpException('Page not found!');
         }
@@ -47,6 +47,33 @@ class MainController extends ContainerAware
                 'path' => $path,
                 'item' => $item
             ));
+    }
+
+    /**
+     * Displays home page content
+     */
+    public function homeAction()
+    {
+        $node = $this->container->get('lyra_content.node_manager')
+            ->findRootNode();
+
+        if (null === $node) {
+            throw new NotFoundHttpException('Page not found!');
+        }
+
+        $types = $this->container->getParameter('lyra_content.types');
+        $contentBundle = $types[$node->getType()]['bundle'];
+
+        $item = $this->container->get('lyra_content.node_manager')
+            ->findNodeContent($node);
+
+        return $this->container->get('templating')
+            ->renderResponse($contentBundle . ':Main:show.html.twig', array(
+                'node' => $node,
+                'path' => array(),
+                'item' => $item
+            ));
+
     }
 
     public function navigationAction($node, $depth)
