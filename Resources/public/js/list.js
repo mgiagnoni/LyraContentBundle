@@ -78,8 +78,6 @@ jQuery().ready(function() {
 
       $("<div></div>")
         .appendTo("body")
-        .load(this.href + ' #ly-form-wrapper',
-          showDialog
-        );
+        .load(this.href, showDialog);
     })
 });
