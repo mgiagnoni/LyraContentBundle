@@ -72,20 +72,7 @@ jQuery().ready(function() {
     })
   }
   
-  $(".action-delete")
-    .click(function(e) {
-      e.preventDefault();
-
-      $("<div></div>")
-        .appendTo("body")
-        .load(this.href + ' #confirm-delete',
-          showDialog
-        );
-    })
-    
-    // Modal dialog to move item/subtree
-    
-    $(".action-move")
+  $(".action-delete, .action-move")
     .click(function(e) {
       e.preventDefault();
 

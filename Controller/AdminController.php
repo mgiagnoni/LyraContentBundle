@@ -2,7 +2,7 @@
 
 /*
  * This file is part of the LyraContentBundle package.
- * 
+ *
  * Copyright 2011 Massimo Giagnoni <gimassimo@gmail.com>
  *
  * This source file is subject to the MIT license. Full copyright and license
@@ -50,21 +50,26 @@ class AdminController extends ContainerAware
         if (!$node) {
             throw new NotFoundHttpException(sprintf('Node with id "%s" does not exist', $id));
         }
-        
+
         if ($node->isRoot()) {
             throw new HttpException(403, 'Root node cannot be deleted.');
         }
+
+        $form = $this->container->get('form.factory')
+            ->createBuilder('form')
+            ->getForm();
 
         $children = $manager->findNodeDescendants($node);
         if ('POST' === $this->container->get('request')->getMethod()) {
             $manager->removeNode($node);
             return new RedirectResponse($this->container->get('router')->generate('lyra_content_admin_list'));
         }
-        
+
         return $this->container->get('templating')
             ->renderResponse('LyraContentBundle:Admin:delete.html.twig', array(
                 'content' => $node,
-                'children' => $children
+                'children' => $children,
+                'form' => $form->createView()
             ));
     }
 
@@ -81,10 +86,10 @@ class AdminController extends ContainerAware
         if (!$node) {
             throw new NotFoundHttpException(sprintf('Node with id "%s" does not exist', $id));
         }
-        
+
         $form = $this->container->get('lyra_content.move_node.form');
         $form->setData($node);
-        
+
         $request = $this->container->get('request');
         if ('POST' === $request->getMethod()) {
             $form->bindRequest($request);
@@ -92,7 +97,7 @@ class AdminController extends ContainerAware
                 return new RedirectResponse($this->container->get('router')->generate('lyra_content_admin_list'));
             }
         }
-        
+
         return $this->container->get('templating')
             ->renderResponse('LyraContentBundle:Admin:move.html.twig', array(
                 'form' => $form->createView(),
@@ -130,7 +135,7 @@ class AdminController extends ContainerAware
                 $manager->unpublishNode($node);
                 break;
         }
-        
+
         return new RedirectResponse($this->container->get('router')->generate('lyra_content_admin_list'));
     }
 }

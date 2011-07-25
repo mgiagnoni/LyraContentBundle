@@ -38,6 +38,14 @@ td.published {
 .object-actions form, .order-actions form {
     display: inline;
 }
+#ly-form-wrapper p {
+    margin: 0;
+    padding: 0;
+}
+.ly-form
+{
+    margin-top: 15px;
+}
 
 /* Delete node dialog box */
 

@@ -8,6 +8,8 @@ h3 {
 .clear {
     clear: both;
     visibility: hidden;
+    margin: 0;
+    padding: 0;
 }
 #button-bar {
     margin: 10px 0 4px;
