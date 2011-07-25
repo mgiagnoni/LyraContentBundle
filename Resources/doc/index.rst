@@ -125,9 +125,10 @@ Customize base application template
 
 LyraContentBundle comes with a **jQuery UI** based backend. All the needed
 javascript and css files are included within the *stylesheets* and
-*javascripts_head* blocks. Add these blocks to your base application template,
-the first is already included if you have based your application on Symfony
-*Standard Edition*::
+*javascripts_head* blocks, another block (*meta_tags*) is used to insert
+meta-description and meta-keywords informations into document header. Add these
+blocks to your base application template, the first is already present if you
+have based your application on Symfony *Standard Edition*::
 
     {# app/Resources/views/base.html.twig #}
 
@@ -136,6 +137,7 @@ the first is already included if you have based your application on Symfony
         <head>
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
             <title>{% block title %}{% endblock %}</title>
+            {% block meta_tags %}{% endblock %}
             {% block javascripts_head %}{% endblock %}
             {% block stylesheets %}{% endblock %}
             <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
