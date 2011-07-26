@@ -13,6 +13,7 @@ namespace Lyra\ContentBundle\Controller;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Lyra\ContentBundle\Model\NodeInterface;
 
 /**
  * Controller to show content in frontend.
@@ -73,13 +74,31 @@ class MainController extends ContainerAware
                 'path' => array(),
                 'item' => $item
             ));
-
     }
 
-    public function navigationAction($node, $depth)
+    /**
+     * Displays navigation links.
+     *
+     * A list of links to descendants of a given parent node (up to a
+     * given max depth) optionally including the parent itself.
+     *
+     * @param NodeInterface $parent parent node
+     * @param integer $depth max depth (i.e. 1 = only direct descendants)
+     * @param Boolean $addParent true = prepend $parent to the list of links
+     */
+    public function navigationAction(NodeInterface $parent, $depth = 1, $addParent = false)
     {
+        if (null === $parent) {
+            $parent = $this->container->get('lyra_content.node_manager')
+                ->findRootNode();
+        }
+
         $nodes = $this->container->get('lyra_content.node_manager')
-            ->findNodePublishedDescendantsFilteredByDepth($node, $depth);
+            ->findNodePublishedDescendantsFilteredByDepth($parent, $depth);
+
+        if ($addParent) {
+            array_unshift($nodes, $parent);
+        }
 
         return $this->container->get('templating')
             ->renderResponse('LyraContentBundle:Main:navigation.html.twig', array(

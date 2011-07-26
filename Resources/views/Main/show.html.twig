@@ -12,5 +12,5 @@
     {{ item.content }}
 {% endblock %}
 {% block navigation %}
-    {% render 'LyraContentBundle:Main:navigation' with {'node' : node, 'depth': 1} %}
+    {% render 'LyraContentBundle:Main:navigation' with {'parent' : node, 'depth': 1} %}
 {% endblock %}
