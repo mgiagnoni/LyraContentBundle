@@ -13,7 +13,6 @@ namespace Lyra\ContentBundle\Controller;
 
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Lyra\ContentBundle\Model\NodeInterface;
 
 /**
  * Controller to show content in frontend.
@@ -86,7 +85,7 @@ class MainController extends ContainerAware
      * @param integer $depth max depth (i.e. 1 = only direct descendants)
      * @param Boolean $addParent true = prepend $parent to the list of links
      */
-    public function navigationAction(NodeInterface $parent, $depth = 1, $addParent = false)
+    public function navigationAction($parent, $depth = 1, $addParent = false)
     {
         if (null === $parent) {
             $parent = $this->container->get('lyra_content.node_manager')
