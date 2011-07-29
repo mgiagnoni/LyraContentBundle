@@ -8,6 +8,7 @@ var configUI = {
         'publish': 'ui-icon-circle-close',
         'back': 'ui-icon-arrowthick-1-w',
         'new': 'ui-icon-document',
-        'move': 'ui-icon-arrowthick-2-ne-sw'
+        'move': 'ui-icon-arrowthick-2-ne-sw',
+        'save': 'ui-icon-disk'
     }
 }

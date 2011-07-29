@@ -18,7 +18,18 @@ jQuery().ready(function() {
                 }
             });
         });
-        
+
+    $('<button></button>')
+        .text($(".ly-form input[type='submit']").attr('value'))
+        .button({
+            icons: {primary: configUI.icons['save']}
+        })
+        .click(function(e) {
+            e.preventDefault();
+            $('.ly-form').submit();
+        })
+        .appendTo($('#button-bar'));
+
     $(".ly-form legend").each(function() {
       $(this).parent().before(
       $("<h3 class='ui-widget-header ui-corner-top'></h3>")
