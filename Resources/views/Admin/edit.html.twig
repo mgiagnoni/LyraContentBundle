@@ -5,7 +5,7 @@
 {% endblock %}
 {% block form %}
     {{ form_errors(form) }}
-    <form class="ly-form" action="{{ path('lyra_content_admin_edit', { 'id': node.id, 'type' : node.type }) }}" method="post">
+    <form class="ly-form" action="{{ path('lyra_content_admin_edit', { 'id': node.id, 'type' : 'page' }) }}" method="post">
         {% include 'LyraContentBundle:Admin:fields.html.twig' %}
         {{ form_row(form._token) }}
         <hr class="clear" />
