@@ -1,9 +1,9 @@
 #column-1 {
-  width: 60%;
+  width: 55%;
   float: left;
 }
 #column-2 {
-  width: 40%;
+  width: 45%;
   float: right;
 }
 #ly-form-wrapper {
@@ -43,7 +43,7 @@
   margin: 0;
 }
 .ly-form label {
-  width: 120px; /* Width of labels */
+  width: 135px; /* Width of labels */
 }
 .ly-form ul.error-list {
     padding: 0;
@@ -52,3 +52,10 @@
     margin-left: 122px;
     padding: 0;
 } 
+.ly-form input[type="text"] {
+    width: 230px;
+}
+.ly-form textarea {
+    width: 230px;
+    height: 120px;
+}
