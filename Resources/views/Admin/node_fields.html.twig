@@ -1,0 +1,32 @@
+<fieldset>
+    <ol>
+        {% if form.node.offsetExists('parent') %}
+        <li>
+           {{ form_errors(form.node.parent) }}
+           {{ form_label(form.node.parent, 'node.parent') }}
+           {{ form_widget(form.node.parent) }}
+        </li>
+        {% endif %}
+
+        <li>
+           {{ form_errors(form.node.title) }}
+           {{ form_label(form.node.title, 'node.title') }}
+           {{ form_widget(form.node.title) }}
+        </li>
+        <li>
+           {{ form_errors(form.node.link_title) }}
+           {{ form_label(form.node.link_title, 'node.link_title') }}
+           {{ form_widget(form.node.link_title) }}
+        </li>
+        <li>
+           {{ form_errors(form.node.path) }}
+           {{ form_label(form.node.path, 'node.path') }}
+           {{ form_widget(form.node.path) }}
+        </li>
+        <li>
+           {{ form_errors(form.node.published) }}
+           {{ form_label(form.node.published, 'node.published') }}
+           {{ form_widget(form.node.published) }}
+        </li>
+    </ol>
+</fieldset>
