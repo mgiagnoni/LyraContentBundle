@@ -28,7 +28,7 @@ class NodeFormType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder->add('parent', 'entity', array(
-            'class' => $options['data_class'],
+            'class' => $this->manager->getClass(),
             'query_builder' => $this->manager->getNodeTreeQueryBuilder()
         ));
 
@@ -47,7 +47,7 @@ class NodeFormType extends AbstractType
                 return;
             }
             $form->add($factory->createNamed('entity', 'parent', null, array(
-               'class' => $options['data_class'],
+               'class' => $manager->getClass(),
                'query_builder' => $manager->getNodeNotDescendantsQueryBuilder($node),
                'label' => 'Parent',
            )));
@@ -62,6 +62,13 @@ class NodeFormType extends AbstractType
                    $buildParent($form, $data);
                }
             });
+    }
+
+    public function getDefaultOptions(array $options)
+    {
+        return array(
+            'data_class' => $this->manager->getClass()
+        );
     }
 
     public function getName()

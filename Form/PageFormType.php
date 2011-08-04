@@ -22,6 +22,7 @@ class PageFormType extends AbstractType
         $builder->add('meta_title', 'text', array('required' => false));
         $builder->add('meta_description', 'textarea', array('required' => false));
         $builder->add('meta_keywords', 'textarea', array('required' => false));
+        $builder->add('node', 'lyra_node_form');
     }
 
     public function getName()

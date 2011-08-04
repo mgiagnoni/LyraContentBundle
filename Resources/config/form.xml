@@ -25,7 +25,7 @@
 
         <service id="lyra_content.node.form.type" class="%lyra_content.node.form.type.class%">
             <argument type="service" id="lyra_content.node_manager" />
-            <tag name="form.type" />
+            <tag name="form.type" alias="lyra_node_form" />
         </service>
 
         <service id="lyra_content.move_node.form" factory-method="getForm" factory-service="lyra_content.move_node.form.builder" class="Symfony\Component\Form\Form" />
@@ -43,7 +43,6 @@
             <tag name="form.type" />
         </service>
 
-
 <!--Page-->
 
         <service id="lyra_content.page.form" factory-method="getForm" factory-service="lyra_content.page.form.builder" class="Symfony\Component\Form\Form" />
@@ -54,13 +53,6 @@
             <argument type="collection">
                 <argument key="data_class">%lyra_content.model.page.class%</argument>
             </argument>
-            <call method="add">
-                <argument>node</argument>
-                <argument type="service" id="lyra_content.node.form.type" />
-                <argument type="collection">
-                    <argument key="data_class">%lyra_content.model.node.class%</argument>
-                </argument>
-            </call>
         </service>
 
         <service id="lyra_content.page.form.type" class="%lyra_content.page.form.type.class%">
