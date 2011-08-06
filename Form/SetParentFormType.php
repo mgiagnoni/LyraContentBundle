@@ -55,13 +55,6 @@ class SetParentFormType extends AbstractType
             });
     }
 
-    public function getDefaultOptions(array $options)
-    {
-        return array(
-            'data_class' => $this->manager->getClass()
-        );
-    }
-
     public function getName()
     {
         return 'lyra_content_set_parent';
