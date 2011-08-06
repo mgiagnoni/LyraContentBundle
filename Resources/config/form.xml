@@ -45,18 +45,14 @@
 
 <!--Page-->
 
-        <service id="lyra_content.page.form" factory-method="getForm" factory-service="lyra_content.page.form.builder" class="Symfony\Component\Form\Form" />
-        <service id="lyra_content.page.form.builder" factory-method="createNamedBuilder" factory-service="form.factory" class="Symfony\Component\Form\FormBuilder">
-            <argument type="service" id="lyra_content.page.form.type" />
+        <service id="lyra_content.page.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
+            <argument>%lyra_content.page.form.type%</argument>
             <argument>%lyra_content.page.form.name%</argument>
-            <argument />
-            <argument type="collection">
-                <argument key="data_class">%lyra_content.model.page.class%</argument>
-            </argument>
         </service>
 
-        <service id="lyra_content.page.form.type" class="%lyra_content.page.form.type.class%">
-            <tag name="form.type" />
+        <service id="lyra_content.page.form.type" class="Lyra\ContentBundle\Form\PageFormType">
+            <argument>%lyra_content.model.page.class%</argument>
+            <tag name="form.type" alias="lyra_content_page" />
         </service>
 
     </services>

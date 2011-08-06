@@ -2,7 +2,7 @@
 
 /*
  * This file is part of the LyraContentBundle package.
- * 
+ *
  * Copyright 2011 Massimo Giagnoni <gimassimo@gmail.com>
  *
  * This source file is subject to the MIT license. Full copyright and license
@@ -51,20 +51,18 @@ class LyraContentExtension extends Extension
             $loader->load(sprintf('%s.xml', $basename));
         }
 
+        $container->setParameter('lyra_content.model.page.class', $config['page']['model']);
+        $container->setParameter('lyra_content.page.form.type', $config['page']['form']['type']);
+        $container->setParameter('lyra_content.page.form.name', $config['page']['form']['name']);
+
         $container->setAlias('lyra_content.node_manager', $config['service']['node_manager']);
         $container->setAlias('lyra_content.page_manager', $config['service']['page_manager']);
 
-        $types = $config['types'];
+        $types = array_merge(array('page' => array(
+            'bundle' => 'LyraContentBundle',
+            'model' => $config['page']['model']
+        )), $config['types']);
 
-        foreach($config['types'] as $name => $value) {
-            $container->setParameter(sprintf('lyra_content.%s.bundle', $name), $value['bundle']);
-            $container->setParameter(sprintf('lyra_content.%s.form.type.class', $name), $value['form']['type']);
-            $container->setParameter(sprintf('lyra_content.%s.form.name', $name), $value['form']['name']);
-            $model = $value['model'][$config['db_driver']];
-            $container->setParameter(sprintf('lyra_content.model.%s.class', $name), $model);
-            $types[$name]['model'] = $model;
-        }
-
-         $container->setParameter('lyra_content.types', $types);
+        $container->setParameter('lyra_content.types', $types);
     }
 }

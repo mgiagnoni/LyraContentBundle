@@ -120,6 +120,61 @@ Routing configuration file for frontend contains a *catch all* route and
 should be imported as the **last entry** of your ``app/config/routing.yml``
 file.
 
+Create your Page class
+----------------------
+
+The bundle provides an abstract **Page** class as **mappedSuperclass** to allow
+easily customization in your application. You need to create a concrete Page
+class that will usually reside in a bundle (*AcmePageBundle* in the following
+example)::
+
+    <?php
+
+    namespace Acme\PageBundle\Entity;
+
+    use Lyra\ContentBundle\Entity\Page as BasePage;
+
+    use Doctrine\ORM\Mapping as ORM;
+
+    /**
+     * @ORM\Entity
+     * @ORM\Table(name="page")
+     */
+    class Page extends BasePage
+    {
+        /**
+         * @ORM\Id
+         * @ORM\Column(type="integer")
+         * @ORM\GeneratedValue(strategy="AUTO")
+         */
+        protected $id;
+    }
+
+This class must contain at least an **id** property.
+
+Then let the bundle know about your Page class::
+
+    # app/config/config.yml
+
+    lyra_content:
+        page:
+            model: Acme\PageBundle\Entity\Page
+
+Update database schema
+----------------------
+
+::
+
+    app/console doctrine:schema:update
+
+Create content root node
+------------------------
+
+The content tree root node (homepage) is currently created with a console
+command::
+
+    app/console lyra:content:init
+
 Customize base application template
 -----------------------------------
 
@@ -144,20 +199,6 @@ have based your application on Symfony *Standard Edition*::
         </head>
     {# ... #}
 
-Update database schema
-----------------------
-
-::
-
-    app/console doctrine:schema:update
-
-Create content root node
-------------------------
-
-The content tree root node (homepage) is currently created with a console
-command::
-
-    app/console lyra:content:init
 
 Finally
 -------

@@ -1,11 +1,5 @@
 Lyra\ContentBundle\Entity\Page:
-    type: entity
-    table: page
-    id:
-        id:
-            type: integer
-            generator:
-                strategy: AUTO
+    type: mappedSuperclass
     fields:
         content:
             column: content
