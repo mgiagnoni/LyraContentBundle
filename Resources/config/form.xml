@@ -6,40 +6,34 @@
 
     <parameters>
         <parameter key="lyra_content.node.form.type.class">Lyra\ContentBundle\Form\NodeFormType</parameter>
+        <parameter key="lyra_content.node.form.name">lyra_content_node_form</parameter>
         <parameter key="lyra_content.move_node.form.type.class">Lyra\ContentBundle\Form\SetParentFormType</parameter>
+        <parameter key="lyra_content.move_node.form.name">lyra_content_move_node_form</parameter>
     </parameters>
 
     <services>
 
 <!--Node-->
 
-        <service id="lyra_content.node.form" factory-method="getForm" factory-service="lyra_content.node.form.builder" class="Symfony\Component\Form\Form" />
-        <service id="lyra_content.node.form.builder" factory-method="createNamedBuilder" factory-service="form.factory" class="Symfony\Component\Form\FormBuilder">
+        <service id="lyra_content.node.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
             <argument type="service" id="lyra_content.node.form.type" />
-            <argument>node</argument>
-            <argument />
-            <argument type="collection">
-                <argument key="data_class">%lyra_content.model.node.class%</argument>
-            </argument>
+            <argument>%lyra_content.node.form.name%</argument>
         </service>
 
         <service id="lyra_content.node.form.type" class="%lyra_content.node.form.type.class%">
             <argument type="service" id="lyra_content.node_manager" />
+            <argument>%lyra_content.model.node.class%</argument>
             <tag name="form.type" alias="lyra_node_form" />
         </service>
 
-        <service id="lyra_content.move_node.form" factory-method="getForm" factory-service="lyra_content.move_node.form.builder" class="Symfony\Component\Form\Form" />
-        <service id="lyra_content.move_node.form.builder" factory-method="createNamedBuilder" factory-service="form.factory" class="Symfony\Component\Form\FormBuilder">
+        <service id="lyra_content.move_node.form" factory-method="createNamed" factory-service="form.factory" class="Symfony\Component\Form\Form">
             <argument type="service" id="lyra_content.move_node.form.type" />
-            <argument>node</argument>
-            <argument />
-            <argument type="collection">
-                <argument key="data_class">%lyra_content.model.node.class%</argument>
-            </argument>
+            <argument>%lyra_content.move_node.form.name%</argument>
         </service>
 
         <service id="lyra_content.move_node.form.type" class="%lyra_content.move_node.form.type.class%">
             <argument type="service" id="lyra_content.node_manager" />
+            <argument>%lyra_content.model.node.class%</argument>
             <tag name="form.type" />
         </service>
 
