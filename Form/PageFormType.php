@@ -18,7 +18,7 @@ class PageFormType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
-        $builder->add('content');
+        $builder->add('content', 'textarea');
         $builder->add('meta_title', 'text', array('required' => false));
         $builder->add('meta_description', 'textarea', array('required' => false));
         $builder->add('meta_keywords', 'textarea', array('required' => false));
