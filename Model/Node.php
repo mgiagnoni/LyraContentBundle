@@ -2,7 +2,7 @@
 
 /*
  * This file is part of the LyraContentBundle package.
- * 
+ *
  * Copyright 2011 Massimo Giagnoni <gimassimo@gmail.com>
  *
  * This source file is subject to the MIT license. Full copyright and license
@@ -17,6 +17,7 @@ abstract class Node implements NodeInterface
      * @var mixed
      */
     protected $id;
+
 
     /**
      * @var string
@@ -46,7 +47,12 @@ abstract class Node implements NodeInterface
     /**
      * @var string
      */
-    protected $type;
+    protected $itemType;
+
+    /**
+     * @var mixed
+     */
+    protected $itemId;
 
     /**
      * @var NodeInterface
@@ -61,7 +67,7 @@ abstract class Node implements NodeInterface
     public function getId()
     {
         return $this->id;
-    }    
+    }
 
     public function getTitle()
     {
@@ -113,14 +119,24 @@ abstract class Node implements NodeInterface
         $this->published = $published;
     }
 
-    public function getType()
+    public function getItemType()
     {
-        return $this->type;
+        return $this->itemType;
     }
 
-    public function setType($type)
+    public function setItemType($itemType)
     {
-        $this->type = $type;
+        $this->itemType = $itemType;
+    }
+
+    public function getItemId()
+    {
+        return $this->itemId;
+    }
+
+    public function setItemId($itemId)
+    {
+        $this->itemId= $itemId;
     }
 
     public function setParent(NodeInterface $parent)
@@ -136,5 +152,5 @@ abstract class Node implements NodeInterface
     public function getChildren()
     {
         return $this->children;
-    }      
+    }
 }

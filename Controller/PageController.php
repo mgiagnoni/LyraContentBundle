@@ -50,7 +50,7 @@ class PageController extends ContainerAware
     public function editAction($id)
     {
         $page = $this->container->get('lyra_content.page_manager')
-            ->findPageByNodeId($id);
+            ->findPage($id);
 
         $form = $this->container->get('lyra_content.page.form');
         $form->setData($page);

@@ -20,7 +20,6 @@ class NodeFormType extends SetParentFormType
         parent::buildForm($builder, $options);
         $builder->add('title');
         $builder->add('published', 'checkbox', array('required' => false));
-        $builder->add('type', 'text', array('required' => false));
         $builder->add('link_title', 'text', array('required' => false));
         $builder->add('path', 'text', array('required' => false));
     }

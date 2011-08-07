@@ -2,7 +2,7 @@
 
 /*
  * This file is part of the LyraContentBundle package.
- * 
+ *
  * Copyright 2011 Massimo Giagnoni <gimassimo@gmail.com>
  *
  * This source file is subject to the MIT license. Full copyright and license
@@ -42,6 +42,11 @@ class PageManager extends AbstractPageManager
         $this->class = $class;
     }
 
+    public function findPage($pageId)
+    {
+        return $this->repository->find($pageId);
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -62,9 +67,29 @@ class PageManager extends AbstractPageManager
      */
     public function savePage(PageInterface $page)
     {
-        $this->updateLinkedNode($page->getNode());
-        $this->em->persist($page);
-        $this->em->flush();
+        $create = null === $page->getId();
+        $this->em->getConnection()->beginTransaction();
+
+        try {
+
+            $this->getNodeManager()->updateNode($page->getNode());
+            $this->em->persist($page);
+            $this->em->flush();
+
+            if ($create) {
+                $this->getNodeManager()->createItemLink('page', $page);
+            }
+
+            $this->em->flush();
+            $this->em->getConnection()->commit();
+
+        } catch(\Exception $e) {
+
+            $this->em->getConnection()->rollback();
+            $this->em->close();
+
+            return false;
+        }
 
         return true;
     }

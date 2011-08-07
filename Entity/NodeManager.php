@@ -2,7 +2,7 @@
 
 /*
  * This file is part of the LyraContentBundle package.
- * 
+ *
  * Copyright 2011 Massimo Giagnoni <gimassimo@gmail.com>
  *
  * This source file is subject to the MIT license. Full copyright and license
@@ -87,7 +87,7 @@ class NodeManager extends AbstractNodeManager
     /**
      * Returns the Query Builder to select all nodes ordered as tree.
      *
-     * @return Doctrine\ORM\QueryBuilder 
+     * @return Doctrine\ORM\QueryBuilder
      */
     public function getNodeTreeQueryBuilder()
     {
@@ -138,7 +138,7 @@ class NodeManager extends AbstractNodeManager
         $qb->where('c.lft <= :lft AND c.rgt >= :rgt')
             ->setParameter('lft', $node->getLeft())
             ->setParameter('rgt', $node->getRight());
-    
+
         return $qb;
     }
 
@@ -180,7 +180,7 @@ class NodeManager extends AbstractNodeManager
         $qb->where('c.lft > :lft AND c.rgt < :rgt')
             ->setParameter('lft', $node->getLeft())
             ->setParameter('rgt', $node->getRight());
-    
+
         return $qb;
     }
 
@@ -239,7 +239,7 @@ class NodeManager extends AbstractNodeManager
      */
     public function findNodeContent(NodeInterface $node)
     {
-        $model = $this->types[$node->getType()]['model'];
+        $model = $this->types[$node->getItemType()]['model'];
 
         return $this->em->getRepository($model)
             ->findOneBy(array('node' => $node->getId()));

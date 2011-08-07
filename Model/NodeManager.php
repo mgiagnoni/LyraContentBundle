@@ -2,7 +2,7 @@
 
 /*
  * This file is part of the LyraContentBundle package.
- * 
+ *
  * Copyright 2011 Massimo Giagnoni <gimassimo@gmail.com>
  *
  * This source file is subject to the MIT license. Full copyright and license
@@ -47,9 +47,22 @@ abstract class NodeManager implements NodeManagerInterface
         }
     }
 
-    public function normalizeNode(NodeInterface $node)
+    public function updateNode(NodeInterface $node)
+    {
+        $this->normalizePath($node);
+    }
+
+    public function createItemLink($type, NodeItemInterface $item)
+    {
+        $node = $item->getNode();
+        $node->setItemType($type);
+        $node->setItemId($item->getId());
+    }
+
+    protected function normalizePath(NodeInterface $node)
     {
         $path = explode('/', $node->getPath());
         $node->setPath(implode('/', array_map('Gedmo\Sluggable\Util\Urlizer::transliterate', $path)));
     }
+
 }

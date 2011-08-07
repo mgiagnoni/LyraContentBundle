@@ -2,7 +2,7 @@
 
 /*
  * This file is part of the LyraContentBundle package.
- * 
+ *
  * Copyright 2011 Massimo Giagnoni <gimassimo@gmail.com>
  *
  * This source file is subject to the MIT license. Full copyright and license
@@ -30,17 +30,6 @@ abstract class PageManager implements PageManagerInterface
         $page = new $class;
 
         return $page;
-    }
-
-    /**
-     * Updates linked node
-     *
-     * @param NodeInterface $node
-     */
-    public function updateLinkedNode(NodeInterface $node)
-    {
-        $node->setType('page');
-        $this->getNodeManager()->normalizeNode($node);
     }
 
     public function setNodeManager(NodeManagerInterface $manager)

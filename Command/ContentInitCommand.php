@@ -50,7 +50,7 @@ EOT
         $node = $nodeManager->createNode();
         $node->setTitle('Home');
         $node->setPublished(true);
-        $node->setType('page');
+        $node->setItemType('page');
 
         $pageManager = $this->getContainer()->get('lyra_content.page_manager');
         $page = $pageManager->createPage();

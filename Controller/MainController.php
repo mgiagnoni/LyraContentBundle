@@ -35,7 +35,7 @@ class MainController extends ContainerAware
 
         $node = end($path);
         $types = $this->container->getParameter('lyra_content.types');
-        $contentBundle = $types[$node->getType()]['bundle'];
+        $contentBundle = $types[$node->getItemType()]['bundle'];
 
         $item = $this->container->get('lyra_content.node_manager')
             ->findNodeContent($node);
@@ -62,7 +62,7 @@ class MainController extends ContainerAware
         }
 
         $types = $this->container->getParameter('lyra_content.types');
-        $contentBundle = $types[$node->getType()]['bundle'];
+        $contentBundle = $types[$node->getItemType()]['bundle'];
 
         $item = $this->container->get('lyra_content.node_manager')
             ->findNodeContent($node);

@@ -48,9 +48,16 @@ Lyra\ContentBundle\Entity\Node:
             type: integer
             gedmo:
                 - treeLevel
-        type:
+        itemType:
+            column: item_type
             type: string
             length: 50
+            nullable: true
+        itemId:
+            column: item_id
+            type: integer
+            nullable: true
+
     manyToOne:
         parent:
             targetEntity: Lyra\ContentBundle\Entity\Node

@@ -2,7 +2,7 @@
 
 /*
  * This file is part of the LyraContentBundle package.
- * 
+ *
  * Copyright 2011 Massimo Giagnoni <gimassimo@gmail.com>
  *
  * This source file is subject to the MIT license. Full copyright and license
@@ -91,18 +91,32 @@ interface NodeInterface
     function setPublished($published);
 
     /**
-     * Gets node type.
+     * Gets node item type.
      *
      * @return string
      */
-    function getType();
+    function getItemType();
 
     /**
-     * Sets node type.
+     * Sets node item type.
      *
      * @param string $type
      */
-    function setType($type);
+    function setItemType($type);
+
+    /**
+     * Gets node item id
+     *
+     * @return mixed
+     */
+    function getItemId();
+
+    /**
+     * Sets node item id
+     *
+     * @param mixed $itemId
+     */
+    function setItemId($itemId);
 
     /**
      * Gets node parent.
