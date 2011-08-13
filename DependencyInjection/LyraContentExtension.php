@@ -47,7 +47,7 @@ class LyraContentExtension extends Extension
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
-        foreach (array($config['db_driver'], 'form', 'listeners') as $basename) {
+        foreach (array($config['db_driver'], 'form', 'listeners', 'validator') as $basename) {
             $loader->load(sprintf('%s.xml', $basename));
         }
 

@@ -281,6 +281,18 @@ class NodeManager extends AbstractNodeManager
         $this->em->flush();
     }
 
+    public function validateUniquePath(NodeInterface $node)
+    {
+        $existing = $this->findNodeBy(array('path' => $node->getPath()));
+
+        if (null !== $existing && $existing->getId() !== $node->getId()) {
+
+            return false;
+        }
+
+        return true;
+    }
+
     /**
      * {@inheritdoc}
      */

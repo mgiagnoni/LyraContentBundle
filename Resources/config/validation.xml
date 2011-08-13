@@ -5,11 +5,17 @@
     http://symfony.com/schema/dic/services/constraint-mapping-1.0.xsd">
 
     <class name="Lyra\ContentBundle\Model\Node">
+
+        <constraint name="Lyra\ContentBundle\Validator\Path">
+            <option name="message">Path is not unique</option>
+        </constraint>
+
         <property name="title">
             <constraint name="NotBlank">
                 <option name="message">Please enter a title</option>
             </constraint>
         </property>
+
     </class>
 
     <class name="Lyra\ContentBundle\Model\Page">
