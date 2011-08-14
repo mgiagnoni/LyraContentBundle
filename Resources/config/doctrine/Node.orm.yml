@@ -14,17 +14,9 @@ Lyra\ContentBundle\Entity\Node:
         title:
             type: string
             length: 255
-            gedmo:
-                sluggable:
-                    slugField: slug
         slug:
             type: string
             length: 255
-            gedmo:
-                slug:
-                    style: default
-                    separator: '-'
-                    unique: false
         path:
             type: string
             length: 255

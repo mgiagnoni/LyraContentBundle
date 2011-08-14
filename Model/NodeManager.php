@@ -11,6 +11,8 @@
 
 namespace Lyra\ContentBundle\Model;
 
+use Gedmo\Sluggable\Util\Urlizer;
+
 abstract class NodeManager implements NodeManagerInterface
 {
     public function createNode()
@@ -49,7 +51,14 @@ abstract class NodeManager implements NodeManagerInterface
 
     public function updateNode(NodeInterface $node)
     {
-        $this->normalizePath($node);
+        $node->setSlug(Urlizer::transliterate($node->getTitle()));
+
+        if (null === $node->getPath() && $node->getParent()) {
+            $node->setPath(ltrim($node->getParent()->getPath().'/'.$node->getSlug(), '/'));
+        } else {
+            $path = explode('/', $node->getPath());
+            $node->setPath(implode('/', array_map('Gedmo\Sluggable\Util\Urlizer::transliterate', $path)));
+        }
     }
 
     public function createItemLink($type, NodeItemInterface $item)
@@ -58,11 +67,4 @@ abstract class NodeManager implements NodeManagerInterface
         $node->setItemType($type);
         $node->setItemId($item->getId());
     }
-
-    protected function normalizePath(NodeInterface $node)
-    {
-        $path = explode('/', $node->getPath());
-        $node->setPath(implode('/', array_map('Gedmo\Sluggable\Util\Urlizer::transliterate', $path)));
-    }
-
 }
