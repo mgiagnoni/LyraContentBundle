@@ -89,7 +89,7 @@ class PageController extends ContainerAware
     protected function getRenderFormResponse($form, $action)
     {
         return $this->container->get('templating')
-            ->renderResponse(sprintf('LyraContentBundle:Admin:%s.html.twig', $action), array(
+            ->renderResponse(sprintf('LyraContentBundle:Page:%s.html.twig', $action), array(
                 'form' => $form->createView(),
                 'node' => $form->getData()->getNode(),
             ));

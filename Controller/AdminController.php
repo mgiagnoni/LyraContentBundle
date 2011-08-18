@@ -31,7 +31,7 @@ class AdminController extends ContainerAware
 
         return $this->container
             ->get('templating')
-            ->renderResponse('LyraContentBundle:Admin:index.html.twig', array(
+            ->renderResponse('LyraContentBundle:Node:index.html.twig', array(
                 'nodes' => $nodes,
                 'types' => $this->container->getParameter('lyra_content.types')
             ));
@@ -66,7 +66,7 @@ class AdminController extends ContainerAware
         }
 
         return $this->container->get('templating')
-            ->renderResponse('LyraContentBundle:Admin:delete.html.twig', array(
+            ->renderResponse('LyraContentBundle:Node:delete.html.twig', array(
                 'content' => $node,
                 'children' => $children,
                 'form' => $form->createView()
@@ -99,7 +99,7 @@ class AdminController extends ContainerAware
         }
 
         return $this->container->get('templating')
-            ->renderResponse('LyraContentBundle:Admin:move.html.twig', array(
+            ->renderResponse('LyraContentBundle:Node:move.html.twig', array(
                 'form' => $form->createView(),
                 'content' => $node
             ));

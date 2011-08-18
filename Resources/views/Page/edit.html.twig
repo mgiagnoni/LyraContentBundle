@@ -1,4 +1,4 @@
-{% extends "LyraContentBundle:Admin:form.html.twig" %}
+{% extends "LyraContentBundle:Page:form.html.twig" %}
 {% block title %}{{ 'form.edit.title'|trans({}, 'LyraContentBundle') }}{% endblock %}
 {% block form_title %}
 <h1>{{ 'form.edit.title'|trans({}, 'LyraContentBundle') }}</h1>
@@ -6,7 +6,7 @@
 {% block form %}
     {{ form_errors(form) }}
     <form class="ly-form" action="{{ path('lyra_content_admin_edit', { 'id': node.itemId, 'type' : 'page' }) }}" method="post">
-        {% include 'LyraContentBundle:Admin:fields.html.twig' %}
+        {% include 'LyraContentBundle:Page:fields.html.twig' %}
         {{ form_row(form._token) }}
         <hr class="clear" />
         <input type="submit" class="button" value="{{ 'form.edit.submit'|trans({}, 'LyraContentBundle') }}" />
