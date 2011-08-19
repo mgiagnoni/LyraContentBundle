@@ -10,10 +10,17 @@ jQuery().ready(function() {
         
     $('table.ly-list td')
         .addClass('ui-widget-content');
-    
+
+    // Sortable headers
+    $('table.ly-list th.sorted-asc')
+        .append("<span class='ui-icon ui-icon-triangle-1-s'></span>")
+
+    $('table.ly-list th.sorted-desc')
+        .append("<span class='ui-icon ui-icon-triangle-1-n'></span>")
+
     $('table.ly-list th')
         .addClass('ui-widget-content ui-state-default');
-    
+
     // Link buttons
     $('a.button')
         .each(function() {
@@ -49,35 +56,35 @@ jQuery().ready(function() {
         
     // Modal dialog to confirm delete operations
 
-  var showDialog = function() {
-    $(".buttons", this).hide()
-    var buttonOk = $("input[name='submit']", this);
-    var buttonsOpts = {};
-    buttonsOpts[buttonOk.hide().val()] = function() {
-      buttonOk.click();
-      $(this).dialog("close");
-    };
-    buttonsOpts[buttonOk.next().hide().text()] = function() {
-      $(this).dialog("close");
-    };
-    $(this).dialog({
-      modal: true,
-      autoOpen: true,
-      resizable: false,
-      minHeight: 90,
-      width: 400,
-      title: $("h1", this).hide().text(),
-      close: function() {$(this).remove()},
-      buttons: buttonsOpts
-    })
-  }
+    var showDialog = function() {
+        $(".buttons", this).hide()
+        var buttonOk = $("input[name='submit']", this);
+        var buttonsOpts = {};
+        buttonsOpts[buttonOk.hide().val()] = function() {
+            buttonOk.click();
+            $(this).dialog("close");
+        };
+        buttonsOpts[buttonOk.next().hide().text()] = function() {
+            $(this).dialog("close");
+        };
+        $(this).dialog({
+            modal: true,
+            autoOpen: true,
+            resizable: false,
+            minHeight: 90,
+            width: 400,
+            title: $("h1", this).hide().text(),
+            close: function() {$(this).remove()},
+            buttons: buttonsOpts
+        })
+    }
   
-  $(".action-delete, .action-move")
-    .click(function(e) {
-      e.preventDefault();
+    $(".action-delete, .action-move")
+        .click(function(e) {
+            e.preventDefault();
 
-      $("<div></div>")
-        .appendTo("body")
-        .load(this.href, showDialog);
-    })
+            $("<div></div>")
+                .appendTo("body")
+                .load(this.href, showDialog);
+        })
 });

@@ -24,6 +24,9 @@ table.ly-list th {
   overflow: hidden;
   padding: .25em;
 }
+table.ly-list th .ui-icon {
+    float: right;
+}
 td.order-actions {
     width: 145px;
     text-align: center !important;
