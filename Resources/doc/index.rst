@@ -160,6 +160,17 @@ Then let the bundle know about your Page class::
         page:
             model: Acme\PageBundle\Entity\Page
 
+If you need a live example of LyraContentBundle configuration, take a look
+at `Lyra CMS repository`_.
+
+The `concrete Page`_ entity is defined in *CMSPageBundle* and extends the
+`abstract Page`_ entity defined in *LyraContentBundle* (included in Lyra
+CMS repository as git submodule).
+
+.. _Lyra CMS repository: https://github.com/mgiagnoni/LyraCMS
+.. _concrete Page: https://github.com/mgiagnoni/LyraCMS/blob/master/src/CMS/PageBundle/Entity/Page.php
+.. _abstract Page: https://github.com/mgiagnoni/LyraContentBundle/blob/master/Entity/Page.php
+
 Update database schema
 ----------------------
 
