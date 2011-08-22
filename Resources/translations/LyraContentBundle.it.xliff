@@ -150,6 +150,18 @@
                 <source>form.move.confirmation</source>
                 <target>Seleziona un nuovo padre per il contenuto '%content%' (e tutti i suoi discendenti):</target>
             </trans-unit>
+            <trans-unit id="38">
+                <source>flash.delete.success</source>
+                <target>Il contenuto è stato cancellato con successo</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>flash.publish.success</source>
+                <target>Il contenuto è stato pubblicato con successo</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>flash.unpublish.success</source>
+                <target>Il contenuto è stato depubblicato con successo</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

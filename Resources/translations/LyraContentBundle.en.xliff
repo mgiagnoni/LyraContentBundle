@@ -150,6 +150,18 @@
                 <source>form.move.confirmation</source>
                 <target>Select a new parent for content item '%content%' (and all its descendants):</target>
             </trans-unit>
+            <trans-unit id="38">
+                <source>flash.delete.success</source>
+                <target>Content item has been successfully deleted</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>flash.publish.success</source>
+                <target>Content item has been successfully published</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>flash.unpublish.success</source>
+                <target>Content item has been successfully unpublished</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

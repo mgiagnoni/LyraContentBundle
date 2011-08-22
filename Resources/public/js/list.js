@@ -1,25 +1,28 @@
 jQuery().ready(function() {
     $('#ly-list-wrapper')
        .addClass('ui-widget ui-widget-content ui-corner-all');
-    
+
     $('#ly-list-wrapper h1')
         .addClass('ui-widget-header ui-corner-all');
-        
+
     $('table.ly-list')
         .addClass('ui-widget');
-        
+
     $('table.ly-list td')
         .addClass('ui-widget-content');
 
     // Sortable headers
     $('table.ly-list th.sorted-asc')
-        .append("<span class='ui-icon ui-icon-triangle-1-s'></span>")
+        .append("<span class='ui-icon ui-icon-triangle-1-s'></span>");
 
     $('table.ly-list th.sorted-desc')
-        .append("<span class='ui-icon ui-icon-triangle-1-n'></span>")
+        .append("<span class='ui-icon ui-icon-triangle-1-n'></span>");
 
     $('table.ly-list th')
         .addClass('ui-widget-content ui-state-default');
+
+    // Flash messages
+    $('.flash-messages .success').addClass('ui-state-highlight');
 
     // Link buttons
     $('a.button')
@@ -33,7 +36,7 @@ jQuery().ready(function() {
                 }
             });
         });
-        
+
     // Order actions buttons
     $('input.button')
         .each(function() {
@@ -53,7 +56,7 @@ jQuery().ready(function() {
                 })
                 .insertBefore($(this).hide())
         });
-        
+
     // Modal dialog to confirm delete operations
 
     var showDialog = function() {
@@ -78,7 +81,7 @@ jQuery().ready(function() {
             buttons: buttonsOpts
         })
     }
-  
+
     $(".action-delete, .action-move")
         .click(function(e) {
             e.preventDefault();

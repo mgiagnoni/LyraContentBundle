@@ -6,6 +6,7 @@
     <div id="button-bar">
         <a class="button action-new" href="{{ path('lyra_content_admin_page_new') }}">{{ 'list.new'|trans({}, 'LyraContentBundle') }}</a>
     </div>
+    {% include 'LyraContentBundle:Node:flash_messages.html.twig' %}
     <form action="{{ path('lyra_content_admin_object') }}" method="post">
     <table class="ly-list">
         <thead>

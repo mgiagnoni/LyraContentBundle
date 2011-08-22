@@ -80,3 +80,14 @@ li.depth-4 {
     display: inline-block;
     padding-right: 5px;
 }
+
+/* Flash messages */
+
+.flash-messages {
+    width: 90%;
+    margin: 5px auto 5px;
+    font-size: 90%;
+}
+.flash-messages div {
+    padding: 2px;
+}

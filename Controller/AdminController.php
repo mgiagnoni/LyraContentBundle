@@ -62,6 +62,8 @@ class AdminController extends ContainerAware
         $children = $manager->findNodeDescendants($node);
         if ('POST' === $this->container->get('request')->getMethod()) {
             $manager->removeNode($node);
+            $this->setFlash('lyra_content success', 'flash.delete.success');
+
             return new RedirectResponse($this->container->get('router')->generate('lyra_content_admin_list'));
         }
 
@@ -130,12 +132,20 @@ class AdminController extends ContainerAware
                 break;
             case 'publish':
                 $manager->publishNode($node);
+                $this->setFlash('lyra_content success', 'flash.publish.success');
                 break;
             case 'unpublish':
                 $manager->unpublishNode($node);
+                $this->setFlash('lyra_content success', 'flash.unpublish.success');
+
                 break;
         }
 
         return new RedirectResponse($this->container->get('router')->generate('lyra_content_admin_list'));
+    }
+
+    protected function setFlash($action, $value)
+    {
+        $this->container->get('session')->setFlash($action, $value);
     }
 }
