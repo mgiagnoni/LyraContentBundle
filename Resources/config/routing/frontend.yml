@@ -1,8 +1,0 @@
-lyra_content_homepage:
-    pattern: /
-    defaults: { _controller: LyraContentBundle:Main:home }
-
-lyra_content_show:
-    pattern: /{path}
-    defaults: { _controller: LyraContentBundle:Main:show }
-    requirements: { path: .* }

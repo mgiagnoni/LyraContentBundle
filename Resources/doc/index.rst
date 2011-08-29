@@ -110,11 +110,11 @@ Import routing configuration
     # app/config/routing.yml
 
     lyra_content_backend:
-        resource: "@LyraContentBundle/Resources/config/routing/backend.yml"
+        resource: "@LyraContentBundle/Resources/config/routing/backend.xml"
         prefix: /admin
 
     lyra_content_frontend:
-        resource: "@LyraContentBundle/Resources/config/routing/frontend.yml"
+        resource: "@LyraContentBundle/Resources/config/routing/frontend.xml"
 
 Routing configuration file for frontend contains a *catch all* route and
 should be imported as the **last entry** of your ``app/config/routing.yml``
