@@ -1,8 +1,13 @@
 <ol class="path">
     {% for node in path %}
         {% if node.published %}
+            {% set title =  node.linkTitle ? node.linkTitle : node.title %}
             <li>
-                <a href="{{ path('lyra_content_show', {'path': node.path}) }}">{{ node.linkTitle ? node.linkTitle : node.title }}</a>
+                {% if loop.last %}
+                    {{ title}}
+                {% else %}
+                    <a href="{{ path('lyra_content_show', {'path': node.path}) }}">{{ title }}</a>
+                {% endif %}
             </li>
         {% endif %}
     {% endfor %}

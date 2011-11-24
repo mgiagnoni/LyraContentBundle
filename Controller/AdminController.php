@@ -17,31 +17,53 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 /**
- * Controller managing actions to administer nodes.
+ * Controller managing actions to administer content from frontend.
  */
 class AdminController extends ContainerAware
 {
-    /**
-     * Displays a list of nodes.
-     */
-    public function indexAction()
+    public function showAction($id)
     {
-        $nodes = $this->container->get('lyra_content.node_manager')
-            ->findAllNodes();
+        $manager =  $this->container->get('lyra_content.node_manager');
+
+        if (!$node = $manager->findNode($id)) {
+            throw new NotFoundHttpException(sprintf('Node with id "%s" does not exist', $id));
+        }
+
+        $path = $manager->findNodeAscendants($node);
+
+        $types = $this->container->getParameter('lyra_content.types');
+        $contentBundle = $types[$node->getItemType()]['bundle'];
+
+        $item = $this->container->get('lyra_content.node_manager')
+            ->findNodeContent($node);
 
         return $this->container
             ->get('templating')
-            ->renderResponse('LyraContentBundle:Node:index.html.twig', array(
-                'nodes' => $nodes,
-                'types' => $this->container->getParameter('lyra_content.types')
+            ->renderResponse($contentBundle . ':Main:show.html.twig', array(
+                'node' => $node,
+                'path' => $path,
+                'item' => $item
             ));
     }
 
-    /**
-     * Deletes a node.
-     *
-     * @param mixed $id node id
-     */
+    public function moveAction($id, $dir)
+    {
+        $manager =  $this->container->get('lyra_content.node_manager');
+
+        $node = $manager->findNode($id);
+        if (!$node) {
+            throw new NotFoundHttpException(sprintf('Node with id "%s" does not exist', $id));
+        }
+
+        if ('up' == $dir) {
+            $manager->moveNodeUp($node);
+        } else {
+            $manager->moveNodeDown($node);
+        }
+
+        return $this->getRedirectToContentResponse($node->getParent());
+    }
+
     public function deleteAction($id)
     {
         $manager =  $this->container->get('lyra_content.node_manager');
@@ -55,97 +77,29 @@ class AdminController extends ContainerAware
             throw new HttpException(403, 'Root node cannot be deleted.');
         }
 
-        $form = $this->container->get('form.factory')
-            ->createBuilder('form')
-            ->getForm();
+        $parent = $node->getParent();
+        $manager->removeNode($node);
 
-        $children = $manager->findNodeDescendants($node);
-        if ('POST' === $this->container->get('request')->getMethod()) {
-            $manager->removeNode($node);
-            $this->setFlash('lyra_content success', 'flash.delete.success');
+        return $this->getRedirectToContentResponse($parent);
+    }
 
-            return new RedirectResponse($this->container->get('router')->generate('lyra_content_admin_list'));
-        }
+    public function descendantsAction($node)
+    {
+        $nodes = $this->container->get('lyra_content.node_manager')
+            ->findNodeDescendantsFilteredByDepth($node);
 
         return $this->container->get('templating')
-            ->renderResponse('LyraContentBundle:Node:delete.html.twig', array(
-                'content' => $node,
-                'children' => $children,
-                'form' => $form->createView()
+            ->renderResponse('LyraContentBundle:Admin:admin_descendants.html.twig', array(
+                'nodes' => $nodes
             ));
     }
 
-    /**
-     * Moves a sub-tree (node + all its descendants) under a new parent.
-     *
-     * @param mixed $id node id
-     */
-    public function moveAction($id)
+    protected function getRedirectToContentResponse($node)
     {
-        $manager =  $this->container->get('lyra_content.node_manager');
-
-        $node = $manager->findNode($id);
-        if (!$node) {
-            throw new NotFoundHttpException(sprintf('Node with id "%s" does not exist', $id));
-        }
-
-        $form = $this->container->get('lyra_content.move_node.form');
-        $form->setData($node);
-
-        $request = $this->container->get('request');
-        if ('POST' === $request->getMethod()) {
-            $form->bindRequest($request);
-            if ($form->isValid() && $manager->saveNode($node)) {
-                return new RedirectResponse($this->container->get('router')->generate('lyra_content_admin_list'));
-            }
-        }
-
-        return $this->container->get('templating')
-            ->renderResponse('LyraContentBundle:Node:move.html.twig', array(
-                'form' => $form->createView(),
-                'content' => $node
-            ));
+        return new RedirectResponse(
+            $this->container->get('router')
+                ->generate('lyra_content_manage', array('id' => $node->getId()))
+        );
     }
 
-    /**
-     * Moves up/down, publish/unpublish node.
-     */
-    public function objectAction()
-    {
-        $reqAction = $this->container->get('request')->get('action');
-        $action = key($reqAction);
-        $id = key($reqAction[$action]);
-
-        $manager =  $this->container->get('lyra_content.node_manager');
-
-        $node = $manager->findNode($id);
-        if (!$node) {
-            throw new NotFoundHttpException(sprintf('Node with id "%s" does not exist', $id));
-        }
-
-        switch ($action) {
-            case 'moveup':
-                $manager->moveNodeUp($node);
-                break;
-            case 'movedown':
-                $manager->moveNodeDown($node);
-                break;
-            case 'publish':
-                $manager->publishNode($node);
-                $this->setFlash('lyra_content success', 'flash.publish.success');
-                break;
-            case 'unpublish':
-                $manager->unpublishNode($node);
-                $this->setFlash('lyra_content success', 'flash.unpublish.success');
-
-                break;
-        }
-
-        return new RedirectResponse($this->container->get('router')->generate('lyra_content_admin_list'));
-    }
-
-    protected function setFlash($action, $value)
-    {
-        $this->container->get('session')->setFlash($action, $value);
-    }
 }

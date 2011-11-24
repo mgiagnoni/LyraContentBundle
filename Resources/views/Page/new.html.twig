@@ -1,13 +1,13 @@
 {% extends "LyraContentBundle:Page:form.html.twig" %}
-{% block title %}{{ 'form.new.title'|trans({}, 'LyraContentBundle') }}{% endblock %}
+{% block title %}{{ 'form.edit.title'|trans({}, 'LyraContentBundle') }}{% endblock %}
 {% block form_title %}
-<h1>{{ 'form.new.title'|trans({}, 'LyraContentBundle') }}</h1>
+<h2>{{ 'form.new.title'|trans({}, 'LyraContentBundle') }}</h2>
 {% endblock %}
 {% block form %}
-<form class="ly-form" action="{{ path('lyra_content_admin_new', {'type' : 'page' }) }}" method="post">
-    {% include 'LyraContentBundle:Page:fields.html.twig' %}
-    {{ form_row(form._token) }}
-    <hr class="clear" />
-    <input type="submit" class="button "value="{{ 'form.new.submit'|trans({}, 'LyraContentBundle') }}" />
-</form>
+    {{ form_errors(form) }}
+    <form class="content-form" action="{{ path('lyra_content_new', {'type' : 'page' }) }}" method="post">
+        {{ form_widget(form) }}
+        <hr class="clear" />
+        <input type="submit" class="button" value="{{ 'form.edit.submit'|trans({}, 'LyraContentBundle') }}" />
+    </form>
 {% endblock %}

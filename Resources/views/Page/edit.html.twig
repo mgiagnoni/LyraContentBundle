@@ -5,9 +5,8 @@
 {% endblock %}
 {% block form %}
     {{ form_errors(form) }}
-    <form class="ly-form" action="{{ path('lyra_content_admin_edit', { 'id': node.itemId, 'type' : 'page' }) }}" method="post">
-        {% include 'LyraContentBundle:Page:fields.html.twig' %}
-        {{ form_row(form._token) }}
+    <form class="content-form" action="{{ path('lyra_content_edit', { 'id': node.itemId, 'type' : 'page' }) }}" method="post">
+        {{ form_widget(form) }}
         <hr class="clear" />
         <input type="submit" class="button" value="{{ 'form.edit.submit'|trans({}, 'LyraContentBundle') }}" />
     </form>

@@ -1,0 +1,15 @@
+{% if nodes|length %}
+<ol>
+    {% for node in nodes %}
+    <li>
+        <a href="{{ path('lyra_content_manage', {'id': node.id}) }}">{{ node.title }}</a> 
+        {% if not node.firstChild %}
+            <a href="{{ path('lyra_content_move', {'id' : node.id, 'dir' : 'up'}) }}">up</a>
+        {% endif %}
+        {% if not node.lastChild  %}
+            <a href="{{ path('lyra_content_move', {'id' : node.id, 'dir' : 'down'}) }}">down</a>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ol>
+{% endif %}

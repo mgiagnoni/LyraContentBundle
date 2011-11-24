@@ -152,6 +152,22 @@ class NodeManager extends AbstractNodeManager
     }
 
     /**
+     * Returns all descendants of a given node up to a max depth.
+     *
+     * @param NodeInterface $node
+     * @param integer $depth max depth relative to $node's depth
+     * @return array
+     */
+    public function findNodeDescendantsFilteredByDepth(NodeInterface $node, $depth = 1)
+    {
+        $qb = $this->getNodeDescendantsQueryBuilder($node);
+        $qb->andWhere('c.lvl - ' . $node->getLevel() . ' <= :d')
+            ->setParameter('d', $depth);
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
      * Returns all published descendants of a given node up to a max depth.
      *
      * @param NodeInterface $node
@@ -232,6 +248,11 @@ class NodeManager extends AbstractNodeManager
         }
 
         return $this->findNodeAscendantsFilteredByPublished($node, true);
+    }
+
+    public function findNodeSiblings($node)
+    {
+        return $this->repository->children($node->getParent(), true);
     }
 
     /**

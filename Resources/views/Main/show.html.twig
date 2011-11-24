@@ -6,11 +6,32 @@
     {% include 'LyraContentBundle:Main:meta_tags.html.twig' with {'item': item} %}
 {% endblock %}
 {% block path %}
+    {# path (breadcrumbs) #}
     {% include 'LyraContentBundle:Main:path.html.twig' with {'path': path} %}
 {% endblock %}
 {% block content %}
+    {# Page content #}
+    <h1>{{ node.title }}</h1>
     {{ item.content }}
 {% endblock %}
 {% block navigation %}
+    {# 
+    Simple navigation menu. It displays all published sub-pages (direct children) of
+    current page. Increase the value of depth to show more sub-levels.
+    #}
+    <h2>Navigation</h2>
     {% render 'LyraContentBundle:Main:navigation' with {'parent' : node, 'depth': 1} %}
+{% endblock %}
+{% block admin %}
+{# Frontend content management #}
+{# TODO: a credential check will be obviously needed here #}
+<h2>Admin</h2>
+<h3>Current page</h3>
+<div class="node-title">{{ node.title }}</div>
+<a href="{{ path('lyra_content_edit', {'type' : node.itemType, 'id' : item.id}) }}" class="edit-node">Edit</a> - 
+<a href="{{ path('lyra_content_delete', {'id' : node.id}) }}" class="delete-node">Delete</a>
+<h3>Sub-pages</h3>
+{% render 'LyraContentBundle:Admin:descendants' with {'node' : node} %}
+<h3>Create content</h3>
+<a href="{{ path('lyra_content_new', {'type' : node.itemType}) }}">New page</a>
 {% endblock %}

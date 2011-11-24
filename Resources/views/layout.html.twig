@@ -1,6 +1,27 @@
-{% extends "::base.html.twig" %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title %}{% endblock %}</title>
+    {% block meta_tags %}{% endblock %}
+    {% block javascripts_head %}{% endblock %}
+    {% block stylesheets %}<link rel="stylesheet" type="text/css" href="{{ asset('bundles/lyracontent/css/main.css') }}" />{% endblock %}
+</head>
+<body>
 {% block body %}
-    {% block path %}{% endblock %}
-    {% block content %}{% endblock %}
-    {% block navigation %}{% endblock %}
+    <div id="out-container">
+        <div id="inner-container">
+            <div id="main-content">
+                {% block path %}{% endblock %}
+                {% block content %}{% endblock %}
+            </div>
+            <div id="right-col">
+                {% block admin %}{% endblock %}
+                {% block navigation %}{% endblock %}
+            </div>
+            <div class="clear">&nbsp;</div>
+        </div>
+    </div>
 {% endblock %}
+</body>
+</html>

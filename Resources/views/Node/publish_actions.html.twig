@@ -1,5 +1,0 @@
-{% if node.published %}
-<input class="button icon-only" type="submit" name="action[unpublish][{{ node.id }}]" value="{{ 'list.unpublish'|trans({}, 'LyraContentBundle') }}" />     
-{% else %}
-<input class="button icon-only" type="submit" name="action[publish][{{ node.id }}]" value="{{ 'list.publish'|trans({}, 'LyraContentBundle') }}" />
-{% endif %}

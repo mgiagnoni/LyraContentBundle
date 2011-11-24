@@ -1,6 +1,8 @@
-{% extends "LyraContentBundle:Admin:form.html.twig" %}
-{% block button_bar %}
-    <div id="button-bar">
-        <a class="button action-back" href="{{ path('lyra_content_admin_list') }}">{{ 'form.back'|trans({}, 'LyraContentBundle') }}</a>
-    </div>
+{% extends 'LyraContentBundle::layout.html.twig' %}
+{% block content %}
+<div id="content-form-wrapper">
+    {% block form_title %}{% endblock %}
+    {% block button_bar %}{% endblock %}
+    {% block form %}{% endblock %}
+</div>
 {% endblock %}

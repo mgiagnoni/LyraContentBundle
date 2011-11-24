@@ -1,0 +1,40 @@
+h2 {
+    margin: 10px 0;
+}
+h3 {
+    margin: 5px 0 10px;
+}
+#inner-container {
+  margin: 0px auto;
+  padding: 0;
+  width: 930px;
+}
+
+#main-content {
+  float: left;
+  margin-bottom: 50px;
+  padding: 10px 0 0;
+  width: 580px;
+}
+/* Breadcrumbs */
+ol.path {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ol.path li {
+    display: inline;
+    margin-left: 3px;
+}
+/* Sidebar */
+#right-col {
+  float: right;
+  width: 300px;
+  margin: 20px 0 20px;
+}
+/* Form */
+.content-form label {
+    display: inline-block;
+    vertical-align: top;
+    width: 120px;
+}

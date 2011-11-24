@@ -2,7 +2,7 @@
 
 /*
  * This file is part of the LyraContentBundle package.
- * 
+ *
  * Copyright 2011 Massimo Giagnoni <gimassimo@gmail.com>
  *
  * This source file is subject to the MIT license. Full copyright and license
@@ -81,6 +81,15 @@ interface NodeManagerInterface
      * @return array
      */
     function findNodeDescendants(NodeInterface $node);
+
+    /**
+     * Returns all descendants of a given node up to a max depth.
+     *
+     * @param NodeInterface $node
+     * @param integer $depth max depth relative to $node's depth
+     * @return array
+     */
+    function findNodeDescendantsFilteredByDepth(NodeInterface $node, $depth);
 
     /**
      * Returns all published descendants of a given node up to a max depth.

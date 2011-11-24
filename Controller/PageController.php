@@ -14,14 +14,8 @@ namespace Lyra\ContentBundle\Controller;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-/**
- * Controller managing actions to administer pages.
- */
 class PageController extends ContainerAware
 {
-    /**
-     * Creates a new page.
-     */
     public function newAction()
     {
         $page = $this->container->get('lyra_content.page_manager')
@@ -35,18 +29,13 @@ class PageController extends ContainerAware
             $form->bindRequest($request);
 
             if ($form->isValid() && $this->container->get('lyra_content.page_manager')->savePage($page)) {
-                return $this->getRedirectToListResponse();
+                return $this->getRedirectToContentResponse($page);
             }
         }
 
         return $this->getRenderFormResponse($form, 'new');
     }
 
-    /**
-     * Edits a page.
-     *
-     * @param mixed id page id
-     */
     public function editAction($id)
     {
         $page = $this->container->get('lyra_content.page_manager')
@@ -60,23 +49,11 @@ class PageController extends ContainerAware
             $form->bindRequest($request);
 
             if ($form->isValid() && $this->container->get('lyra_content.page_manager')->savePage($page)) {
-               return $this->getRedirectToListResponse();
+               return $this->getRedirectToContentResponse($page);
             }
         }
 
         return $this->getRenderFormResponse($form, 'edit');
-    }
-
-    /**
-     * Returns the response to redirect to list of contents.
-     *
-     * @return RedirectResponse
-     */
-    protected function getRedirectToListResponse()
-    {
-        return new RedirectResponse(
-            $this->container->get('router')->generate('lyra_content_admin_list')
-        );
     }
 
     /**
@@ -93,5 +70,13 @@ class PageController extends ContainerAware
                 'form' => $form->createView(),
                 'node' => $form->getData()->getNode(),
             ));
+    }
+
+    protected function getRedirectToContentResponse($page)
+    {
+        return new RedirectResponse(
+            $this->container->get('router')
+                ->generate('lyra_content_manage', array('id' => $page->getNode()->getId()))
+        );
     }
 }

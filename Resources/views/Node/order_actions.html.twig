@@ -1,5 +1,0 @@
-{% if not node.root %}
-<a class="button icon-only action-move" href="{{ path('lyra_content_admin_move', {'id' : node.id}) }}">{{ 'list.move'|trans({}, 'LyraContentBundle') }}</a>
-<input class="button icon-only{% if node.firstChild %} disabled{% endif %}" type="submit" name="action[moveup][{{ node.id }}]" value="{{ 'list.up'|trans({}, 'LyraContentBundle') }}" />
-<input class="button icon-only{% if node.lastChild %} disabled{% endif %}" type="submit" name="action[movedown][{{ node.id }}]" value="{{ 'list.down'|trans({}, 'LyraContentBundle') }}" />
-{% endif %}

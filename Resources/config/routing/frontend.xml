@@ -5,7 +5,27 @@
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <route id="lyra_content_homepage" pattern="/">
-        <default key="_controller">LyraContentBundle:Main:home </default>
+        <default key="_controller">LyraContentBundle:Main:home</default>
+    </route>
+
+    <route id="lyra_content_move" pattern="manage/{id}/move/{dir}">
+        <default key="_controller">LyraContentBundle:Admin:move</default>
+    </route>
+
+    <route id="lyra_content_delete" pattern="manage/{id}/delete">
+        <default key="_controller">LyraContentBundle:Admin:delete</default>
+    </route>
+
+    <route id="lyra_content_manage" pattern="manage/{id}/show">
+        <default key="_controller">LyraContentBundle:Admin:show</default>
+    </route>
+
+    <route id="lyra_content_edit" pattern="manage/{type}/{id}/edit">
+        <default key="_controller">LyraContentBundle:Page:edit</default>
+    </route>
+
+    <route id="lyra_content_new" pattern="manage/{type}/new">
+        <default key="_controller">LyraContentBundle:Page:new</default>
     </route>
 
     <route id="lyra_content_show" pattern="/{path}">

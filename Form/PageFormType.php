@@ -18,11 +18,11 @@ class PageFormType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
+        $builder->add('node', 'lyra_node_form');
         $builder->add('content', 'textarea');
         $builder->add('meta_title', 'text', array('required' => false));
         $builder->add('meta_description', 'textarea', array('required' => false));
         $builder->add('meta_keywords', 'textarea', array('required' => false));
-        $builder->add('node', 'lyra_node_form');
     }
 
     public function getName()
@@ -30,4 +30,3 @@ class PageFormType extends AbstractType
         return 'lyra_content_page';
     }
 }
-

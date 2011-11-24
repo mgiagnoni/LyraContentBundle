@@ -109,13 +109,12 @@ Import routing configuration
 
     # app/config/routing.yml
 
-    lyra_content_backend:
-        resource: "@LyraContentBundle/Resources/config/routing/backend.xml"
-        prefix: /admin
-
     lyra_content_frontend:
         resource: "@LyraContentBundle/Resources/config/routing/frontend.xml"
+        prefix: /cms
 
+Prefix can be omitted, it allows you to manage only a *section* of your
+website with the bundle.
 Routing configuration file for frontend contains a *catch all* route and
 should be imported as the **last entry** of your ``app/config/routing.yml``
 file.
@@ -186,31 +185,6 @@ command::
 
     app/console lyra:content:init
 
-Customize base application template
------------------------------------
-
-LyraContentBundle comes with a **jQuery UI** based backend. All the needed
-javascript and css files are included within the *stylesheets* and
-*javascripts_head* blocks, another block (*meta_tags*) is used to insert
-meta-description and meta-keywords informations into document header. Add these
-blocks to your base application template, the first is already present if you
-have based your application on Symfony *Standard Edition*::
-
-    {# app/Resources/views/base.html.twig #}
-
-    <!DOCTYPE html>
-    <html>
-        <head>
-            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-            <title>{% block title %}{% endblock %}</title>
-            {% block meta_tags %}{% endblock %}
-            {% block javascripts_head %}{% endblock %}
-            {% block stylesheets %}{% endblock %}
-            <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
-        </head>
-    {# ... #}
-
-
 Finally
 -------
 
@@ -221,28 +195,17 @@ As usual do not forget::
 Try it out
 ==========
 
-Access admin area
------------------
-
-::
-
-    .../app_dev.php/admin/content
-
-You should see a list of contents (only home page is present). Create a
-new page: leave `Home` as *parent* (only choice possible), enter `Page` as
-*title*, leave *path* blank, select *published* and enter some content.
-Save the page.
-
-Show content in frontend
-------------------------
-
 Visit::
 
-    .../app_dev.php/page
+    http://.../app_dev.php/cms
 
-You will see the page you have just created. Go back to admin area to create
-more content. You can try to add a sub-page, selecting the first page you
-have created as parent.
+or, if you haven't specifiedy any route prefix, simply::
+
+    http://.../app_dev.php/
+
+You can create content directly from the home page (link *Create page* on
+the right column). Once you have created the first page, try to add a sub-page,
+selecting the first page as parent.
 
 Note that the *path* field is auto-generated if left blank when a new page is
 created. In any case it can be customized by editing the page.
