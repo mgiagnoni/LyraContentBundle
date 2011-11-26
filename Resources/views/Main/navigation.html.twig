@@ -2,7 +2,7 @@
 <ol>
     {% for node in nodes %}
     <li>
-        <a href="{{ path('lyra_content_show', {'path': node.path}) }}">{{ node.title }}</a> 
+        <a href="{{ path('lyra_content_show', {'path': node.path}) }}">{{ node.linkTitle ? node.linkTitle : node.title }}</a> 
     </li>
     {% endfor %}
 </ol>
