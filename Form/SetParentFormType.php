@@ -36,8 +36,8 @@ class SetParentFormType extends AbstractType
         $factory = $builder->getFormFactory();
         $manager = $this->manager;
 
-        $buildParent = function ($form, $node) use ($factory, $manager, $options) {
-
+        $buildParent = function ($form, $node) use ($factory, $manager, $options)
+        {
             if ($node->isRoot()) {
                 $form->remove('parent');
                 return;
@@ -50,15 +50,26 @@ class SetParentFormType extends AbstractType
            )));
         };
 
-        $builder->addEventListener(FormEvents::PRE_SET_DATA, function
-            (DataEvent $event) use ($buildParent) {
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (DataEvent $event) use ($buildParent)
+            {
                $form = $event->getForm();
                $data = $event->getData();
 
                if ($data instanceof \Lyra\ContentBundle\Entity\Node) {
                    $buildParent($form, $data);
                }
-            });
+            }
+        );
+
+        $builder->addEventListener(FormEvents::POST_BIND, function (DataEvent $event) use ($manager)
+            {
+                $data = $event->getData();
+
+                if ($data instanceof \Lyra\ContentBundle\Entity\Node) {
+                   $manager->updateNode($data);
+                }
+            }
+        );
     }
 
     public function getDefaultOptions(array $options)

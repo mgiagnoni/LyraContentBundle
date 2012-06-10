@@ -71,8 +71,6 @@ class PageManager extends AbstractPageManager
         $this->em->getConnection()->beginTransaction();
 
         try {
-
-            $this->getNodeManager()->updateNode($page->getNode());
             $this->em->persist($page);
             $this->em->flush();
 
