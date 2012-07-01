@@ -19,7 +19,7 @@ Vendors script
 Add the following lines to the ``deps`` file located in your project root
 folder::
 
-    [gedmo-doctrine-extensions]
+    [DoctrineExtensions]
 	    git=git://github.com/l3pp4rd/DoctrineExtensions.git
 
     [LyraContentBundle]
@@ -47,8 +47,8 @@ Register namespaces
 
     $loader->registerNamespaces(array(
         // other namespaces
-        'Gedmo' => __DIR__.'/../vendor/gedmo-doctrine-extensions/lib',
-        'Lyra'  => __DIR__.'/../vendor/bundles',
+        'Gedmo' => __DIR__.'/../vendor/DoctrineExtensions/lib',
+        'Lyra' => __DIR__.'/../vendor/bundles',
     ));
 
     // ...
