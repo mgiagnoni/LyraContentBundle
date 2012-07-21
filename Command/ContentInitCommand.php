@@ -49,6 +49,7 @@ EOT
 
         $node = $nodeManager->createNode();
         $node->setTitle('Home');
+        $node->setSlug('');
         $node->setPublished(true);
         $node->setItemType('page');
 
