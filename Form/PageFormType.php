@@ -12,13 +12,13 @@
 namespace Lyra\ContentBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormBuilderInterface;
 
 class PageFormType extends AbstractType
 {
-    public function buildForm(FormBuilder $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('node', 'lyra_node_form');
+        $builder->add('node', 'lyra_content_node_form');
         $builder->add('content', 'textarea');
         $builder->add('meta_title', 'text', array('required' => false));
         $builder->add('meta_description', 'textarea', array('required' => false));

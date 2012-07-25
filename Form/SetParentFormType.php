@@ -12,7 +12,8 @@
 namespace Lyra\ContentBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\Event\DataEvent;
 use Doctrine\ORM\EntityRepository;
@@ -26,7 +27,7 @@ class SetParentFormType extends AbstractType
         $this->manager = $manager;
     }
 
-    public function buildForm(FormBuilder $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('parent', 'entity', array(
             'class' => $this->manager->getClass(),
@@ -43,7 +44,7 @@ class SetParentFormType extends AbstractType
                 return;
             }
 
-            $form->add($factory->createNamed('entity', 'parent', null, array(
+            $form->add($factory->createNamed('parent', 'entity', null, array(
                'class' => $manager->getClass(),
                'query_builder' => $manager->getNodeNotDescendantsQueryBuilder($node),
                'label' => 'Parent',
@@ -72,11 +73,11 @@ class SetParentFormType extends AbstractType
         );
     }
 
-    public function getDefaultOptions(array $options)
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return array(
+        $resolver->setDefaults(array(
           'data_class' => $this->manager->getClass()
-       );
+       ));
     }
 
     public function getName()

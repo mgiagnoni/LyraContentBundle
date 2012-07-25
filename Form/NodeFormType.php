@@ -11,11 +11,11 @@
 
 namespace Lyra\ContentBundle\Form;
 
-use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormBuilderInterface;
 
 class NodeFormType extends SetParentFormType
 {
-    public function buildForm(FormBuilder $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
         $builder->add('title');
@@ -26,7 +26,7 @@ class NodeFormType extends SetParentFormType
 
     public function getName()
     {
-        return 'lyra_content_node';
+        return 'lyra_content_node_form';
     }
 
 }

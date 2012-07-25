@@ -51,13 +51,13 @@ abstract class NodeManager implements NodeManagerInterface
 
     public function updateNode(NodeInterface $node)
     {
-        $node->setSlug(Urlizer::transliterate($node->getTitle()));
+        $node->setSlug(Urlizer::urlize($node->getTitle()));
 
         if (null === $node->getPath() && $node->getParent()) {
             $node->setPath(ltrim($node->getParent()->getPath().'/'.$node->getSlug(), '/'));
         } else {
             $path = explode('/', $node->getPath());
-            $node->setPath(implode('/', array_map('Gedmo\Sluggable\Util\Urlizer::transliterate', $path)));
+            $node->setPath(implode('/', array_map('Gedmo\Sluggable\Util\Urlizer::urlize', $path)));
         }
     }
 
