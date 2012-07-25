@@ -1,0 +1,30 @@
+{
+    "name": "lyra/content-bundle",
+    "type": "symfony-bundle",
+    "description": "A content management bundle for Symfony2, Doctrine2",
+    "keywords": ["content management", "cms"],
+    "homepage": "https://github.com/mgiagnoni/LyraContentBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Massimo Giagnoni",
+            "email": "gimassimo@gmail.com"
+        },
+        {
+            "name": "contributors",
+            "homepage": "https://github.com/mgiagnoni/LyraContentBundle/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/symfony": "2.1.*",
+        "doctrine/orm": "2.2.*",
+        "doctrine/doctrine-bundle": "dev-master",
+        "gedmo/doctrine-extensions": "dev-master"
+    },
+    "autoload": {
+        "psr-0": { "Lyra\\ContentBundle": "" }
+    },
+    "target-dir": "Lyra/ContentBundle",
+    "minimum-stability": "dev"
+}
