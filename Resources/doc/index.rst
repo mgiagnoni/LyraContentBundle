@@ -9,49 +9,32 @@ Installation
 Install bundle source code
 --------------------------
 
-To install LyraContentBundle and all required dependencies (currently
-Gedmo Doctrine Extensions) you can use one of the following alternative
-methods.
+You can use Composer to install LyraContentBundle and all required 
+dependencies (currently `Gedmo Doctrine Extensions`_).
 
-Vendors script
-~~~~~~~~~~~~~~
-
-Add the following lines to the ``deps`` file located in your project root
+Add the following line to the ``composer.json`` file in your project
 folder::
 
-    [gedmo-doctrine-extensions]
-	    git=git://github.com/l3pp4rd/DoctrineExtensions.git
+    {
+        //...
 
-    [LyraContentBundle]
-        git=git://github.com/mgiagnoni/LyraContentBundle.git
-        target=bundles/Lyra/ContentBundle
+        "require": {
+            //...
+            "lyra/content-bundle" : "dev-master"
+        }
 
-Then cd to your project root folder and run the vendors script::
+        //...
+    }
 
-    ./bin/vendors install
+Get Composer, unless it's already present::
 
-Git submodules
-~~~~~~~~~~~~~~
+    curl -s http://getcomposer.org/installer | php
 
-As usual, cd to your project root folder, then run::
+Install the bundle with::
 
-    git submodule add git://github.com/l3pp4rd/DoctrineExtensions.git vendor/gedmo-doctrine-extensions
-    git submodule add git://github.com/mgiagnoni/LyraContentBundle.git vendor/bundles/Lyra/ContentBundle
+    php composer.phar update lyra/content-bundle
 
-Register namespaces
--------------------
-
-``Lyra`` and ``Gedmo`` namespaces must be registered for use by the autoloader::
-
-    // app/autoload.php
-
-    $loader->registerNamespaces(array(
-        // other namespaces
-        'Gedmo' => __DIR__.'/../vendor/gedmo-doctrine-extensions/lib',
-        'Lyra'  => __DIR__.'/../vendor/bundles',
-    ));
-
-    // ...
+.. _Gedmo Doctrine Extensions: https://github.com/l3pp4rd/DoctrineExtensions
 
 Add bundle to application kernel
 --------------------------------
@@ -89,7 +72,7 @@ is set to **true** as in default Symfony2 *Standard Edition* configuration::
         entity_managers:
             default:
                 mappings:
-                    LyraContentBundle: { type: yml }
+                    LyraContentBundle: { type: xml }
 
 Enable translator
 -----------------
